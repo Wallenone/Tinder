@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "HomeIndexViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.window.backgroundColor =[UIColor whiteColor];
+    
+    // 设置窗口的根控制器
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[HomeIndexViewController alloc] init]];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
