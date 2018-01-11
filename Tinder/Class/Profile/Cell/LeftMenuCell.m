@@ -10,24 +10,42 @@
 @interface LeftMenuCell(){
     NSString *_content;
     NSString *_icon;
+    CGFloat _iconWidth;
+    CGFloat _iconHeight;
 }
 @property(nonatomic,strong)UIImageView *iconView;
 @property(nonatomic,strong)UILabel *contentLabel;
 @end
 @implementation LeftMenuCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithContent:(NSString *)content withIcon:(NSString *)iconStr{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithModel:(NSDictionary *)model{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.selectionStyle=UITableViewCellSelectionStyleNone;
-        self.backgroundColor=[UIColor whiteColor];
-        _content=content;
-        _icon=iconStr;
+        //self.selectionStyle=UITableViewCellSelectionStyleNone;
+        self.backgroundColor=[UIColor clearColor];
+        _content=[model stringForKey:@"text"];
+        _icon=[model stringForKey:@"icon"];
+        _iconWidth=[model floatForKey:@"width"];
+        _iconHeight=[model floatForKey:@"height"];
+        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 245*SCREEN_RADIO, 45*SCREEN_RADIO)];
+        view.layer.cornerRadius=8;
+        view.backgroundColor=[UIColor colorWithRed:135/255.0f green:141/255.0f blue:209/255.0f alpha:0.52];
+        self.selectedBackgroundView = view;
         [self creatSubView];
     }
     
     return self;
 }
+
+
+- (void)setFrame:(CGRect)frame{
+    frame.origin.x += 10;
+    frame.origin.y += 10;
+    frame.size.height -= 10;
+    frame.size.width -= 20;
+    [super setFrame:frame];
+}
+
 
 -(void)creatSubView{
     [self addSubview:self.iconView];
@@ -41,8 +59,8 @@
 
 -(UIImageView *)iconView{
     if (!_iconView) {
-        _iconView=[[UIImageView alloc] initWithFrame:CGRectMake(19*SCREEN_RADIO, 11*SCREEN_RADIO, 21*SCREEN_RADIO, 23*SCREEN_RADIO)];
-        _iconView.image=[UIImage imageNamed:[NSString stringWithFormat:@"ico-%@",_icon]];
+        _iconView=[[UIImageView alloc] initWithFrame:CGRectMake(19*SCREEN_RADIO, 11*SCREEN_RADIO, _iconWidth, _iconHeight)];
+        _iconView.image=[UIImage imageNamed:_icon];
     }
     
     return _iconView;

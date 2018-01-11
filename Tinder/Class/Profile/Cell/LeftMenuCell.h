@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LeftMenuCell : UITableViewCell
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithContent:(NSString *)content withIcon:(NSString *)iconStr;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithModel:(NSDictionary *)model;
 @end

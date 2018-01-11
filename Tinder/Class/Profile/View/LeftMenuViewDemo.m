@@ -20,6 +20,7 @@
 @property(nonatomic,strong)UILabel *contentLabel;
 @property(nonatomic,strong)UIImageView *pitImgView;
 @property(nonatomic,strong)EZJFastTableView *tbv;
+@property(nonatomic,strong)UIView *footerView;
 @end
 
 @implementation LeftMenuViewDemo
@@ -30,6 +31,7 @@
     if(self = [super initWithFrame:frame]){
         self.backgroundColor=[UIColor getColor:@"3D457F"];
         [self addSubViews];
+        [self setData];
     }
     return  self;
 }
@@ -41,6 +43,15 @@
     [self addSubview:self.contentLabel];
     [self addSubview:self.pitImgView];
     [self addSubview:self.tbv];
+    [self addSubview:self.footerView];
+}
+
+-(void)setData{
+    [self.tbv selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+}
+
+-(void)settingClick{
+    
 }
 
 -(UIImageView *)diImgView{
@@ -99,23 +110,25 @@
 -(EZJFastTableView *)tbv{
     if (!_tbv) {
        
-        CGRect tbvFrame = CGRectMake(0, CGRectGetMaxY(self.contentLabel.frame)+56*SCREEN_RADIO, 245*SCREEN_RADIO, 345*SCREEN_RADIO);
+        CGRect tbvFrame = CGRectMake(22*SCREEN_RADIO, CGRectGetMaxY(self.contentLabel.frame)+56*SCREEN_RADIO, 245*SCREEN_RADIO, 345*SCREEN_RADIO);
         //初始化
         
         _tbv = [[EZJFastTableView alloc]initWithFrame:tbvFrame];
-        _tbv.backgroundColor=[UIColor getColor:@"3D457F"];
+        _tbv.backgroundColor=[UIColor clearColor];
         _tbv.separatorStyle=UITableViewCellSeparatorStyleNone;
+        _tbv.scrollEnabled=NO;
         //给tableview赋值
-         [_tbv setDataArray:@[@"Index",@"Drafts",@"Starred",@"Sent",@"Trash",@"Archive"]];
+        [_tbv setDataArray:@[@{@"icon":@"ico-Inbox",@"text":@"Index",@"width":@"21",@"height":@"23"},@{@"icon":@"ico-draft",@"text":@"Drafts",@"width":@"21",@"height":@"20"},@{@"icon":@"ico-star",@"text":@"Starred",@"width":@"18",@"height":@"18"},@{@"icon":@"ico-sent",@"text":@"Sent",@"width":@"23.9",@"height":@"21.1"},@{@"icon":@"ico-trash",@"text":@"Trash",@"width":@"20",@"height":@"23"},@{@"icon":@"ico-archive",@"text":@"Archive",@"width":@"23",@"height":@"21"}]];
         
         [_tbv onBuildCell:^(id cellData,NSString *cellIdentifier,NSIndexPath *index) {
-            LeftMenuCell *cell=[[LeftMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier WithContent:cellData withIcon:cellData];
+            LeftMenuCell *cell=[[LeftMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier WithModel:cellData];
+            
             return cell;
         }];
         
         //动态改变
         [_tbv onChangeCellHeight:^CGFloat(NSIndexPath *indexPath,id cellData) {
-            return 45*SCREEN_RADIO;
+            return 54*SCREEN_RADIO;
         }];
         
        
@@ -132,4 +145,26 @@
     return _tbv;
 }
 
+-(UIView *)footerView{
+    if (!_footerView) {
+        _footerView=[[UIView alloc] initWithFrame:CGRectMake(30*SCREEN_RADIO, SCREEN_HEIGHT-83*SCREEN_RADIO, 245*SCREEN_RADIO, 45*SCREEN_RADIO)];
+        
+        UIImageView *icon=[[UIImageView alloc] initWithFrame:CGRectMake(19*SCREEN_RADIO, 11*SCREEN_RADIO, 20*SCREEN_RADIO, 21*SCREEN_RADIO)];
+        icon.image=[UIImage imageNamed:@"ico-settings"];
+        [_footerView addSubview:icon];
+        
+        UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(icon.frame)+31*SCREEN_RADIO, 15*SCREEN_RADIO, 0, 16*SCREEN_RADIO)];
+        label.text=@"Settings";
+        label.textColor=[UIColor getColor:@"ffffff"];
+        label.font=[UIFont systemFontOfSize:16*SCREEN_RADIO];
+        [label sizeToFit];
+        [_footerView addSubview:label];
+        
+        UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 245*SCREEN_RADIO, 45*SCREEN_RADIO)];
+        [btn addTarget:self action:@selector(settingClick) forControlEvents:UIControlEventTouchUpInside];
+        [_footerView addSubview:btn];
+    }
+    
+    return _footerView;
+}
 @end

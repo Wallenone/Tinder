@@ -11,4 +11,5 @@
 
 #import "CGPch.h"
 #import "RkyExtendedHitButton.h"
+#import "NSDictionary+Accessors.h"
 #endif /* PrefixHeader_pch */
