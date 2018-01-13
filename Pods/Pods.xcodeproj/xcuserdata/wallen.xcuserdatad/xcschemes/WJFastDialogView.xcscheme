@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '954406016523E3EDCDC83072F700C2D5'
+               BlueprintIdentifier = '28D83900E70CFA8B94AD9EDE2948775D'
                BlueprintName = 'WJFastDialogView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libWJFastDialogView.a'>

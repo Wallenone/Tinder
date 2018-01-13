@@ -24,6 +24,7 @@
 		E57EEDA5200608F0007D0FC1 /* ProfileIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDA4200608F0007D0FC1 /* ProfileIndexView.m */; };
 		E57EEDA8200609A7007D0FC1 /* LeftMenuViewDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDA7200609A7007D0FC1 /* LeftMenuViewDemo.m */; };
 		E57EEDAD200629FF007D0FC1 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDAC200629FF007D0FC1 /* LeftMenuCell.m */; };
+		E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57F05A52009F81100ECDAC0 /* SPCarouselView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		E57EEDA7200609A7007D0FC1 /* LeftMenuViewDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewDemo.m; sourceTree = "<group>"; };
 		E57EEDAB200629FF007D0FC1 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
 		E57EEDAC200629FF007D0FC1 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
+		E57F05A42009F81100ECDAC0 /* SPCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCarouselView.h; sourceTree = "<group>"; };
+		E57F05A52009F81100ECDAC0 /* SPCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCarouselView.m; sourceTree = "<group>"; };
 		E59474FA1FEB97D800F1DFBD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F9D40BD9EA1D3C31FB22E514 /* libPods-Tinder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tinder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -218,6 +221,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		E57F05A02009F47D00ECDAC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E57F05A42009F81100ECDAC0 /* SPCarouselView.h */,
+				E57F05A52009F81100ECDAC0 /* SPCarouselView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E59474F81FEB967800F1DFBD /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +243,7 @@
 		E59474F91FEB969700F1DFBD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E57F05A02009F47D00ECDAC0 /* View */,
 				E511663C20073CEC00F26D66 /* CHCardView */,
 				E57EED9D2005F883007D0FC1 /* HomeIndexViewController.h */,
 				E57EED9E2005F883007D0FC1 /* HomeIndexViewController.m */,
@@ -436,7 +449,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -457,6 +470,7 @@
 				E511664B20073D4600F26D66 /* CHCardItemCustomView.m in Sources */,
 				E51C10611FE7693900CA522F /* AppDelegate.m in Sources */,
 				E511664720073CEC00F26D66 /* CHCardView.m in Sources */,
+				E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

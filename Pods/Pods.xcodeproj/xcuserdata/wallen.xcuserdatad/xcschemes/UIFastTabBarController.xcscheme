@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B79715C25B6E0C2044039FD768E6F4F6'
+               BlueprintIdentifier = 'D283D6BD33258A6A2B16508A52FE00C2'
                BlueprintName = 'UIFastTabBarController'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libUIFastTabBarController.a'>

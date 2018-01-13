@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D1EFE7BE62451A081FE9B7BD98F137A9'
+               BlueprintIdentifier = 'C3765EDCF2BF5A51FDD1463E7ABB6403'
                BlueprintName = 'WJFastScrollViewPoint'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libWJFastScrollViewPoint.a'>

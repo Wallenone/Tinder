@@ -12,7 +12,14 @@
 #import "CHCardView.h"
 #import "CHCardItemCustomView.h"
 #import "CHCardItemModel.h"
-@interface HomeIndexViewController ()<CHCardViewDelegate, CHCardViewDataSource>
+#import "SPCarouselView.h"
+
+
+@interface HomeIndexViewController ()<CHCardViewDelegate, CHCardViewDataSource,UIScrollViewDelegate,SPCarouselViewDelegate>{
+    CGFloat _videoWidth;
+    NSInteger _videoPageTotal;
+    CGFloat _kCarouselViewH;
+}
 @property(nonatomic,strong)UIView *headerView;
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)RkyExtendedHitButton *leftBtn;
@@ -26,6 +33,18 @@
 @property(nonatomic,strong)UIButton *tool3;
 @property(nonatomic,strong)UIButton *tool4;
 @property(nonatomic,strong)UIButton *tool5;
+@property(nonatomic,strong)UIScrollView *screenView;
+@property(nonatomic,strong)SPCarouselView *screenImgView;
+@property(nonatomic,strong)UIView *screenImgViewLine;
+@property(nonatomic,strong)UIButton *screenCloseBtn;
+@property(nonatomic,strong)UILabel *screenNickName;
+@property(nonatomic,strong)UILabel *screenJuLi;  //距离
+@property(nonatomic,strong)UIView *screenlineView;
+@property(nonatomic,strong)UILabel *screenDescription;
+@property(nonatomic,strong)UIView *screenLineView1;
+@property(nonatomic,strong)UILabel *screenContentTitle;
+@property(nonatomic,strong)UILabel *screenLabel;
+@property(nonatomic,strong)UIScrollView *screenvideoScrollView;
 @end
 
 @implementation HomeIndexViewController
@@ -39,6 +58,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _videoWidth=(SCREEN_WIDTH-50*SCREEN_RADIO)/3;
+    _videoPageTotal=7;
+    _kCarouselViewH=SCREEN_HEIGHT/5*3;
     self.view.backgroundColor=[UIColor getColor:@"3D457F"];
     [self addNavView];
     [self addSubViews];
@@ -59,12 +81,59 @@
 }
 
 -(void)addSubViews{
+    [self.view addSubview:self.cardView];
+    [self.view addSubview:self.screenView];
+    [self.screenView addSubview:self.screenImgView];
+    [self.screenView addSubview:self.screenImgViewLine];
+    [self.screenView addSubview:self.screenCloseBtn];
+    [self.screenView addSubview:self.screenNickName];
+    [self.screenView addSubview:self.screenJuLi];
+    [self.screenView addSubview:self.screenlineView];
+    [self.screenView addSubview:self.screenDescription];
+    [self.screenView addSubview:self.screenLineView1];
+    [self.screenView addSubview:self.screenContentTitle];
+    [self.screenView addSubview:self.screenLabel];
+    [self.screenView addSubview:self.screenvideoScrollView];
     [self.view addSubview:self.tool1];
     [self.view addSubview:self.tool2];
     [self.view addSubview:self.tool3];
     [self.view addSubview:self.tool4];
     [self.view addSubview:self.tool5];
-    [self.view addSubview:self.cardView];
+    [self setToolsHidden:YES];
+    [self setData];
+}
+
+
+-(void)setData{
+    self.screenView.contentSize=CGSizeMake(SCREEN_WIDTH, CGRectGetMaxY(self.screenvideoScrollView.frame)+100*SCREEN_RADIO);
+    self.screenLabel.text=[NSString stringWithFormat:@"1/%ld",(long)_videoPageTotal];
+    [self setVideoScrollData];
+}
+
+-(void)setVideoScrollData{
+    for (int i=0; i<_videoPageTotal; i++) {
+        for (int j=0; j<6; j++) {
+            // 计算位置
+            int row = j/3;
+            int column = j%3;
+            CGFloat x = 15*SCREEN_RADIO + column * (_videoWidth + 10*SCREEN_RADIO);
+            CGFloat y = 0 + row * (_videoWidth + 10*SCREEN_RADIO);
+            
+            UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(x+i*SCREEN_WIDTH, y, _videoWidth, _videoWidth)];
+            btn.layer.cornerRadius=5;
+            btn.layer.masksToBounds = YES;
+            [btn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(singleTapAction:) forControlEvents:UIControlEventTouchUpInside];
+            [self.screenvideoScrollView addSubview:btn];
+        }
+    }
+    [self.screenvideoScrollView setContentSize:CGSizeMake(SCREEN_WIDTH*_videoPageTotal, _videoWidth*2+20*SCREEN_RADIO)];
+    
+}
+
+-(void)singleTapAction:(UIButton *)sender
+{
+    
 }
 
 - (void)loadData {
@@ -137,14 +206,88 @@
     
 }
 
+-(void)closeScreenClick{
+    [self setToolsHidden:YES];
+    self.screenView.hidden=YES;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+}
+
 - (void)cardView:(CHCardView *)cardView didClickItemAtIndex:(NSInteger)index {
-    
+    [self setScreenViewData:index];
+}
+
+-(void)setScreenViewData:(NSInteger)index{
+    self.screenView.hidden=NO;
+    CHCardItemModel *itemModel = (CHCardItemModel *)[self.dataArray objectAtIndex:index];
+    self.screenImgView.urlImages=@[itemModel.imagename];
+//    [self.screenImgView sd_setImageWithURL:[NSURL URLWithString:itemModel.imagename] placeholderImage:[UIImage imageNamed:@"1"]];
+    [self setToolsHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    [self.view setNeedsLayout];
+}
+
+-(void)setToolsHidden:(BOOL)state{
+    if (state) {
+        self.tool1.hidden=NO;
+        self.tool2.hidden=NO;
+        self.tool3.hidden=NO;
+        self.tool4.hidden=NO;
+        self.tool5.hidden=NO;
+    }else{
+        self.tool1.hidden=YES;
+        self.tool2.hidden=NO;
+        self.tool3.hidden=NO;
+        self.tool4.hidden=NO;
+        self.tool5.hidden=YES;
+    }
 }
 
 #pragma mark - CHCardViewDelegate
 - (NSInteger)numberOfItemViewsInCardView:(CHCardView *)cardView {
     return self.dataArray.count;
 }
+
+#pragma mark - SPCarouselViewDelegate
+- (void)carouselView:(SPCarouselView *)carouselView clickedImageAtIndex:(NSUInteger)index {
+    NSLog(@"代理方式:点击了第%zd张图片",index);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView==self.screenView) {
+        CGFloat width = self.view.frame.size.width;
+        
+        CGFloat offsetY = scrollView.contentOffset.y;
+        
+        // if (scrollView == self.tableView) {
+        
+        // 偏移的y值
+        if(offsetY < 0) {
+            CGFloat totalOffset = _kCarouselViewH + fabs(offsetY);
+            CGFloat f = totalOffset / _kCarouselViewH;
+            // 拉伸后的图片的frame应该是同比例缩放。
+            self.screenImgView.frame = CGRectMake(-(width*f-width) / 2.0, offsetY, width * f, totalOffset);
+        }
+        //}
+    }else if(scrollView==self.screenvideoScrollView){
+        int page = scrollView.contentOffset.x / scrollView.frame.size.width;
+        self.screenLabel.text=[NSString stringWithFormat:@"%d/%ld",page+1,(long)_videoPageTotal];
+    }
+    
+    
+    
+    
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    //self.screenImgView.autoScroll = NO;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    //self.screenImgView.autoScroll = YES;
+}
+
 
 - (CHCardItemView *)cardView:(CHCardView *)cardView itemViewAtIndex:(NSInteger)index {
     CHCardItemCustomView *itemView = [[CHCardItemCustomView alloc] initWithFrame:cardView.bounds];
@@ -270,4 +413,169 @@
     }
     return _cardView;
 }
+
+-(UIScrollView *)screenView{
+    if (!_screenView) {
+        _screenView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _screenView.showsHorizontalScrollIndicator=NO;
+        _screenView.showsVerticalScrollIndicator=NO;
+        _screenView.hidden=YES;
+        _screenView.backgroundColor=[UIColor whiteColor];
+        _screenView.delegate=self;
+        // 设置最大伸缩比例
+        
+        _screenView.maximumZoomScale = 2.0;
+        
+        // 设置最小伸缩比例
+        
+        _screenView.minimumZoomScale = 0.2;
+    }
+    
+    return _screenView;
+}
+
+
+-(SPCarouselView *)screenImgView{
+    if(!_screenImgView){
+        _screenImgView = [[SPCarouselView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/5*3)];
+        // 属性设置
+        _screenImgView.delegate=self;
+        _screenImgView.autoScroll = NO;
+    }
+    
+    return _screenImgView;
+}
+
+
+-(UIView *)screenImgViewLine{
+    if (!_screenImgViewLine) {
+        _screenImgViewLine=[[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.screenImgView.frame), SCREEN_WIDTH, 1)];
+        _screenImgViewLine.backgroundColor=[UIColor getColor:@"ECECEC"];
+    }
+    
+    return _screenImgViewLine;
+}
+
+-(UIButton *)screenCloseBtn{
+    if (!_screenCloseBtn) {
+        _screenCloseBtn=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-55*SCREEN_RADIO, SCREEN_HEIGHT/5*3-18.5*SCREEN_RADIO, 40*SCREEN_RADIO, 40*SCREEN_RADIO)];
+        [_screenCloseBtn setImage:[UIImage imageNamed:@"tools_Nope"] forState:UIControlStateNormal];
+        [_screenCloseBtn addTarget:self action:@selector(closeScreenClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _screenCloseBtn;
+}
+
+-(UILabel *)screenNickName{
+    if (!_screenNickName) {
+        _screenNickName=[[UILabel alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, CGRectGetMaxY(self.screenImgView.frame)+15*SCREEN_RADIO, 0, 18*SCREEN_RADIO)];
+        _screenNickName.text=@"Wallen, 30";
+        _screenNickName.textColor=[UIColor getColor:@"000000"];
+        _screenNickName.font=[UIFont systemFontOfSize:18*SCREEN_RADIO];
+        [_screenNickName sizeToFit];
+    }
+    
+    return _screenNickName;
+}
+
+-(UILabel *)screenJuLi{
+    if (!_screenJuLi) {
+        _screenJuLi=[[UILabel alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, CGRectGetMaxY(self.screenNickName.frame)+10*SCREEN_RADIO, 0, 14*SCREEN_RADIO)];
+        _screenJuLi.text=@"10 公里以外";
+        _screenJuLi.textColor=[UIColor getColor:@"7c7c7c"];
+        _screenJuLi.font=[UIFont systemFontOfSize:14*SCREEN_RADIO];
+        [_screenJuLi sizeToFit];
+    }
+    
+    return _screenJuLi;
+}
+
+-(UIView *)screenlineView{
+    if (!_screenlineView) {
+        _screenlineView=[[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.screenJuLi.frame)+15*SCREEN_RADIO, SCREEN_WIDTH, 1)];
+        _screenlineView.backgroundColor=[UIColor getColor:@"ECECEC"];
+    }
+    
+    return _screenlineView;
+}
+
+-(UILabel *)screenDescription{
+    if (!_screenDescription) {
+        _screenDescription = [[UILabel alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, CGRectGetMaxY(self.screenlineView.frame)+15*SCREEN_RADIO, SCREEN_WIDTH-30*SCREEN_RADIO, 0)];
+        _screenDescription.text = @"这是labelOne的高度自适应这是labelOne的高度自适应这是labelOne的高度自适应这是labelOne的高度自适应是labelOne的高度自适应这是labelOne的高度自适应是labelOne的高度自适应这是labelOne的高度自适应是";
+        
+        _screenDescription.font = [UIFont systemFontOfSize:15*SCREEN_RADIO];
+        _screenDescription.numberOfLines = 0;
+        _screenDescription.textColor=[UIColor getColor:@"7c7c7c"];
+        CGFloat height = [UILabel getHeightByWidth:_screenDescription.frame.size.width title:_screenDescription.text font:_screenDescription.font];
+        
+        NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+        
+        paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+        
+        paraStyle.alignment = NSTextAlignmentLeft;
+        
+        paraStyle.lineSpacing = 6;
+        
+        NSDictionary *dic = @{NSFontAttributeName:_screenDescription.font, NSParagraphStyleAttributeName:paraStyle, NSKernAttributeName:@0
+                              };
+        NSAttributedString *attributeStr = [[NSAttributedString alloc] initWithString:_screenDescription.text attributes:dic];
+        
+        _screenDescription.attributedText = attributeStr;
+        
+        CGFloat labelHeight = [_screenDescription sizeThatFits:CGSizeMake(SCREEN_WIDTH-30*SCREEN_RADIO, MAXFLOAT)].height;
+        NSNumber *count = @((labelHeight) / _screenDescription.font.lineHeight);
+        
+        _screenDescription.frame = CGRectMake(15*SCREEN_RADIO, CGRectGetMaxY(self.screenlineView.frame)+10*SCREEN_RADIO, SCREEN_WIDTH-30*SCREEN_RADIO, height+[count floatValue]*6);
+    }
+    
+    return _screenDescription;
+}
+
+-(UIView *)screenLineView1{
+    if (!_screenLineView1) {
+        _screenLineView1=[[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.screenDescription.frame)+20*SCREEN_RADIO, SCREEN_WIDTH, 1)];
+        _screenLineView1.backgroundColor=[UIColor getColor:@"ECECEC"];
+    }
+    
+    return _screenLineView1;
+}
+
+-(UILabel *)screenContentTitle{
+    if (!_screenContentTitle) {
+        _screenContentTitle=[[UILabel alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, CGRectGetMaxY(self.screenLineView1.frame)+10*SCREEN_RADIO, 0, 15*SCREEN_RADIO)];
+        _screenContentTitle.text=@"1673 个 视频";
+        _screenContentTitle.textColor=[UIColor getColor:@"000000"];
+        _screenContentTitle.font=[UIFont systemFontOfSize:15*SCREEN_RADIO];
+        [_screenContentTitle sizeToFit];
+    }
+    
+    return _screenContentTitle;
+}
+
+-(UILabel *)screenLabel{
+    if (!_screenLabel) {
+        _screenLabel=[[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2, CGRectGetMaxY(self.screenLineView1.frame)+15*SCREEN_RADIO, SCREEN_WIDTH/2-15*SCREEN_RADIO, 10*SCREEN_RADIO)];
+        _screenLabel.textColor=[UIColor getColor:@"000000"];
+        _screenLabel.font=[UIFont systemFontOfSize:10*SCREEN_RADIO];
+        _screenLabel.textAlignment=NSTextAlignmentRight;
+    }
+    
+    return _screenLabel;
+}
+
+-(UIScrollView *)screenvideoScrollView{
+    if (!_screenvideoScrollView) {
+        _screenvideoScrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.screenContentTitle.frame)+10*SCREEN_RADIO, SCREEN_WIDTH, _videoWidth*2+20*SCREEN_RADIO)];
+        _screenvideoScrollView.backgroundColor=[UIColor clearColor];
+        _screenvideoScrollView.pagingEnabled = YES; //使用翻页属性
+        _screenvideoScrollView.delegate = self;//这个是重点
+        _screenvideoScrollView.showsHorizontalScrollIndicator=NO;
+        _screenvideoScrollView.showsVerticalScrollIndicator=NO;
+    }
+    
+    return _screenvideoScrollView;
+}
+
+
 @end

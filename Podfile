@@ -13,4 +13,6 @@ target 'Tinder' do
   pod 'FLAnimatedImage', '~> 1.0'
   pod 'WJGlobalTimer'
   pod 'Masonry'
+  pod 'UICommonTools'
+  pod 'WJPlayer'
 end

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '09CBEA6AF2D584A07EC8445BFE036B56'
+               BlueprintIdentifier = 'B96181D3BFCF32B4B05968506DB78E4E'
                BlueprintName = 'UIFastTableView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libUIFastTableView.a'>

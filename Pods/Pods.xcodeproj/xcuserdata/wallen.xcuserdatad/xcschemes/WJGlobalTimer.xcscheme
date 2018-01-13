@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5DD3B42B4A8DA312C4BDF2794537841C'
+               BlueprintIdentifier = '466F0BF73EDB535372E7CA75EB060A6D'
                BlueprintName = 'WJGlobalTimer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libWJGlobalTimer.a'>
