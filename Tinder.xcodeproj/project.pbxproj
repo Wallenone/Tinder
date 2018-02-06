@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BF932A7B4DACC9EFA1520E64 /* libPods-Tinder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D40BD9EA1D3C31FB22E514 /* libPods-Tinder.a */; };
-		E511664520073CEC00F26D66 /* CHCardItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E511663E20073CEC00F26D66 /* CHCardItemModel.m */; };
-		E511664620073CEC00F26D66 /* CHCardItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = E511664020073CEC00F26D66 /* CHCardItemView.m */; };
-		E511664720073CEC00F26D66 /* CHCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = E511664220073CEC00F26D66 /* CHCardView.m */; };
-		E511664820073CEC00F26D66 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = E511664420073CEC00F26D66 /* NSString+MD5.m */; };
-		E511664B20073D4600F26D66 /* CHCardItemCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = E511664920073D4600F26D66 /* CHCardItemCustomView.m */; };
 		E51C10611FE7693900CA522F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C10601FE7693900CA522F /* AppDelegate.m */; };
 		E51C10671FE7693900CA522F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51C10651FE7693900CA522F /* Main.storyboard */; };
 		E51C10691FE7693900CA522F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E51C10681FE7693900CA522F /* Assets.xcassets */; };
@@ -25,6 +20,7 @@
 		E57EEDA8200609A7007D0FC1 /* LeftMenuViewDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDA7200609A7007D0FC1 /* LeftMenuViewDemo.m */; };
 		E57EEDAD200629FF007D0FC1 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDAC200629FF007D0FC1 /* LeftMenuCell.m */; };
 		E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57F05A52009F81100ECDAC0 /* SPCarouselView.m */; };
+		E5CD83D32029B1F400F3A90A /* CardScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CD83D22029B1F400F3A90A /* CardScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,16 +43,6 @@
 /* Begin PBXFileReference section */
 		284F7976918739A7D8FF91D2 /* Pods-Tinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tinder/Pods-Tinder.debug.xcconfig"; sourceTree = "<group>"; };
 		81F4B7451F76878C01AD6C7B /* Pods-Tinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tinder/Pods-Tinder.release.xcconfig"; sourceTree = "<group>"; };
-		E511663D20073CEC00F26D66 /* CHCardItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCardItemModel.h; sourceTree = "<group>"; };
-		E511663E20073CEC00F26D66 /* CHCardItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCardItemModel.m; sourceTree = "<group>"; };
-		E511663F20073CEC00F26D66 /* CHCardItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCardItemView.h; sourceTree = "<group>"; };
-		E511664020073CEC00F26D66 /* CHCardItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCardItemView.m; sourceTree = "<group>"; };
-		E511664120073CEC00F26D66 /* CHCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCardView.h; sourceTree = "<group>"; };
-		E511664220073CEC00F26D66 /* CHCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCardView.m; sourceTree = "<group>"; };
-		E511664320073CEC00F26D66 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
-		E511664420073CEC00F26D66 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		E511664920073D4600F26D66 /* CHCardItemCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCardItemCustomView.m; sourceTree = "<group>"; };
-		E511664A20073D4600F26D66 /* CHCardItemCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCardItemCustomView.h; sourceTree = "<group>"; };
 		E51C105C1FE7693900CA522F /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51C105F1FE7693900CA522F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E51C10601FE7693900CA522F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,6 +68,8 @@
 		E57F05A42009F81100ECDAC0 /* SPCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCarouselView.h; sourceTree = "<group>"; };
 		E57F05A52009F81100ECDAC0 /* SPCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCarouselView.m; sourceTree = "<group>"; };
 		E59474FA1FEB97D800F1DFBD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E5CD83D12029B1F400F3A90A /* CardScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardScrollView.h; sourceTree = "<group>"; };
+		E5CD83D22029B1F400F3A90A /* CardScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardScrollView.m; sourceTree = "<group>"; };
 		F9D40BD9EA1D3C31FB22E514 /* libPods-Tinder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tinder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,23 +114,6 @@
 				F9D40BD9EA1D3C31FB22E514 /* libPods-Tinder.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E511663C20073CEC00F26D66 /* CHCardView */ = {
-			isa = PBXGroup;
-			children = (
-				E511664A20073D4600F26D66 /* CHCardItemCustomView.h */,
-				E511664920073D4600F26D66 /* CHCardItemCustomView.m */,
-				E511663D20073CEC00F26D66 /* CHCardItemModel.h */,
-				E511663E20073CEC00F26D66 /* CHCardItemModel.m */,
-				E511663F20073CEC00F26D66 /* CHCardItemView.h */,
-				E511664020073CEC00F26D66 /* CHCardItemView.m */,
-				E511664120073CEC00F26D66 /* CHCardView.h */,
-				E511664220073CEC00F26D66 /* CHCardView.m */,
-				E511664320073CEC00F26D66 /* NSString+MD5.h */,
-				E511664420073CEC00F26D66 /* NSString+MD5.m */,
-			);
-			path = CHCardView;
 			sourceTree = "<group>";
 		};
 		E51C10531FE7693900CA522F = {
@@ -243,8 +214,8 @@
 		E59474F91FEB969700F1DFBD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E5CD83D02029B1F400F3A90A /* CardScrollView */,
 				E57F05A02009F47D00ECDAC0 /* View */,
-				E511663C20073CEC00F26D66 /* CHCardView */,
 				E57EED9D2005F883007D0FC1 /* HomeIndexViewController.h */,
 				E57EED9E2005F883007D0FC1 /* HomeIndexViewController.m */,
 			);
@@ -265,6 +236,15 @@
 				E57EEDA9200629D5007D0FC1 /* View */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		E5CD83D02029B1F400F3A90A /* CardScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E5CD83D12029B1F400F3A90A /* CardScrollView.h */,
+				E5CD83D22029B1F400F3A90A /* CardScrollView.m */,
+			);
+			path = CardScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,7 +429,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -461,16 +441,12 @@
 			files = (
 				E57EED9F2005F883007D0FC1 /* HomeIndexViewController.m in Sources */,
 				E57EEDAD200629FF007D0FC1 /* LeftMenuCell.m in Sources */,
-				E511664820073CEC00F26D66 /* NSString+MD5.m in Sources */,
-				E511664620073CEC00F26D66 /* CHCardItemView.m in Sources */,
 				E57EEDA5200608F0007D0FC1 /* ProfileIndexView.m in Sources */,
 				E51C106F1FE7693900CA522F /* main.m in Sources */,
 				E57EEDA8200609A7007D0FC1 /* LeftMenuViewDemo.m in Sources */,
-				E511664520073CEC00F26D66 /* CHCardItemModel.m in Sources */,
-				E511664B20073D4600F26D66 /* CHCardItemCustomView.m in Sources */,
 				E51C10611FE7693900CA522F /* AppDelegate.m in Sources */,
-				E511664720073CEC00F26D66 /* CHCardView.m in Sources */,
 				E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */,
+				E5CD83D32029B1F400F3A90A /* CardScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

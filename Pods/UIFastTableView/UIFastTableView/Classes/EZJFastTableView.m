@@ -41,6 +41,7 @@
     AutoChangeCellHeightBlock autoChangeCellHeightBlock;
     Cellediting cellediting;
     ScollViewDidBlock scollViewDidBlock;
+    CelleditArrBlock celleditArrBlock;
 }
 //@synthesize customerViewName,columnNumber,reFreshPage;
 //@synthesize leftMargin,apartMargin,cellWidth;
@@ -65,7 +66,9 @@
 #pragma mark - 单行tableview初始化 block回调
 - (id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        
+        self.estimatedRowHeight = 0;
+        self.estimatedSectionHeaderHeight = 0;
+        self.estimatedSectionFooterHeight = 0;
         currentPage=0;
         self.delegate = self;
         self.dataSource = self;
@@ -118,6 +121,17 @@
         [self reloadData];
     }
 }
+-(NSArray *)getDataArray{
+    return self.arrayDatas;
+}
+
+-(void)deleteCell:(NSArray *)arr{
+    for (NSIndexPath *indexPath in arr) {
+        [self.arrayDatas removeObjectAtIndex:indexPath.row];
+    }
+    
+    [self deleteRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationFade];
+}
 
 -(void)onBuildCell:(BuildCellBlock)block{
     if (block) {
@@ -144,9 +158,19 @@
     }
 }
 
+- (void)onCellediting:(Cellediting)block withCelleditBlock:(CelleditArrBlock)arrBlock{
+    if (block) {
+        cellediting=block;
+    }
+    if (arrBlock) {
+        celleditArrBlock=arrBlock;
+    }
+}
+
 - (void)scrollToTop:(BOOL)animated {
     [self setContentOffset:CGPointMake(0,0) animated:animated];
 }
+
 
 - (void)scrollToBottom:(BOOL)animated {
     NSUInteger sectionCount = [self numberOfSections];
@@ -220,6 +244,15 @@
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
     }
+}
+
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (celleditArrBlock) {
+        return celleditArrBlock(indexPath,[self.arrayDatas objectAtIndex:indexPath.row]);
+    }
+    
+    return @[];
 }
 
 

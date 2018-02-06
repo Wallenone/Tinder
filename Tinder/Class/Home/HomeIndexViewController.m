@@ -9,13 +9,10 @@
 #import "HomeIndexViewController.h"
 #import "ProfileIndexView.h"
 #import "LeftMenuViewDemo.h"
-#import "CHCardView.h"
-#import "CHCardItemCustomView.h"
-#import "CHCardItemModel.h"
 #import "SPCarouselView.h"
+#import "CardScrollView.h"
 
-
-@interface HomeIndexViewController ()<CHCardViewDelegate, CHCardViewDataSource,UIScrollViewDelegate,SPCarouselViewDelegate>{
+@interface HomeIndexViewController ()<UIScrollViewDelegate,SPCarouselViewDelegate,CardScrollViewDelegate,CardScrollViewDataSource>{
     CGFloat _videoWidth;
     NSInteger _videoPageTotal;
     CGFloat _kCarouselViewH;
@@ -27,7 +24,6 @@
 @property(nonatomic,strong)ProfileIndexView *profileVC;
 @property(nonatomic,strong)LeftMenuViewDemo *leftDemo;
 @property(nonatomic,strong)NSMutableArray *dataArray;
-@property(nonatomic,strong)CHCardView *cardView;
 @property(nonatomic,strong)UIButton *tool1;
 @property(nonatomic,strong)UIButton *tool2;
 @property(nonatomic,strong)UIButton *tool3;
@@ -45,6 +41,8 @@
 @property(nonatomic,strong)UILabel *screenContentTitle;
 @property(nonatomic,strong)UILabel *screenLabel;
 @property(nonatomic,strong)UIScrollView *screenvideoScrollView;
+@property(nonatomic,strong)CardScrollView *cardScrollView;
+@property(nonatomic,strong)NSMutableArray *cards;
 @end
 
 @implementation HomeIndexViewController
@@ -54,6 +52,7 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self.tabBarController.tabBar setHidden:YES];
+    [self.cardScrollView loadCard];
 }
 
 - (void)viewDidLoad {
@@ -66,8 +65,6 @@
     [self addSubViews];
     // data
     [self loadData];
-    // reload
-    [self.cardView reloadData];
 }
 
 -(void)addNavView{
@@ -81,8 +78,8 @@
 }
 
 -(void)addSubViews{
-    [self.view addSubview:self.cardView];
     [self.view addSubview:self.screenView];
+    [self.view addSubview:self.cardScrollView];
     [self.screenView addSubview:self.screenImgView];
     [self.screenView addSubview:self.screenImgViewLine];
     [self.screenView addSubview:self.screenCloseBtn];
@@ -105,9 +102,63 @@
 
 
 -(void)setData{
+    for (NSInteger i = 0; i < 20; i++) {
+        [self.cards addObject:@(i)];
+    }
     self.screenView.contentSize=CGSizeMake(SCREEN_WIDTH, CGRectGetMaxY(self.screenvideoScrollView.frame)+100*SCREEN_RADIO);
     self.screenLabel.text=[NSString stringWithFormat:@"1/%ld",(long)_videoPageTotal];
     [self setVideoScrollData];
+}
+
+
+#pragma mark - CardScrollViewDelegate
+- (void)updateCard:(UIView *)card withProgress:(CGFloat)progress direction:(CardMoveDirection)direction {
+    if (direction == CardMoveDirectionNone) {
+        if (card.tag != [self.cardScrollView currentCard]) {
+            CGFloat scale = 1 - 0.1 * progress;
+            card.layer.transform = CATransform3DMakeScale(scale, scale, 1.0);
+            card.layer.opacity = 1 - 0.2*progress;
+        } else {
+            card.layer.transform = CATransform3DIdentity;
+            card.layer.opacity = 1;
+        }
+    } else {
+        NSInteger transCardTag = direction == CardMoveDirectionLeft ? [self.cardScrollView currentCard] + 1 : [self.cardScrollView currentCard] - 1;
+        if (card.tag != [self.cardScrollView currentCard] && card.tag == transCardTag) {
+            card.layer.transform = CATransform3DMakeScale(0.9 + 0.1*progress, 0.9 + 0.1*progress, 1.0);
+            card.layer.opacity = 0.8 + 0.2*progress;
+        } else if (card.tag == [self.cardScrollView currentCard]) {
+            card.layer.transform = CATransform3DMakeScale(1 - 0.1 * progress, 1 - 0.1 * progress, 1.0);
+            card.layer.opacity = 1 - 0.2*progress;
+        }
+    }
+}
+
+#pragma mark - CardScrollViewDataSource
+- (NSInteger)numberOfCards {
+    return self.cards.count;
+}
+
+- (UIView *)cardReuseView:(UIView *)reuseView atIndex:(NSInteger)index {
+    if (reuseView) {
+        // you can set new style
+        return reuseView;
+    }
+    
+    UIView *card = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-38*2, self.view.frame.size.height-87*2)];
+    card.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    card.layer.cornerRadius = 4;
+    card.layer.masksToBounds = YES;
+    
+    return card;
+}
+
+- (void)deleteCardWithIndex:(NSInteger)index {
+    [self.cards removeObjectAtIndex:index];
+}
+
+- (void)clickItem:(NSInteger)index{
+    
 }
 
 -(void)setVideoScrollData{
@@ -138,37 +189,6 @@
 
 - (void)loadData {
     
-    // 随机切换..
-    NSInteger random = arc4random_uniform(1000);
-    if (random % 2 == 0) {
-        //  本地数据
-        [self.dataArray removeAllObjects];
-        for (int i = 0; i < 10; i++) {
-            CHCardItemModel *itemModel = [[CHCardItemModel alloc] init];
-            itemModel.localImagename = [NSString stringWithFormat:@"%d.jpg", i + 1];
-            [self.dataArray addObject:itemModel];
-        }
-    } else {
-        
-        // 网络数据
-        [self.dataArray removeAllObjects];
-        
-        NSArray *urls = @[
-                          @"http://photo.enterdesk.com/2010-10-24/enterdesk.com-3B11711A460036C51C19F87E7064FE9D.jpg",
-                          @"http://img3.redocn.com/tupian/20150411/shouhuixiantiaopingguoshiliang_4042458.jpg",
-                          @"http://pic28.nipic.com/20130424/11588775_115415688157_2.jpg",
-                          @"http://www.274745.cc/imgall/obuwgnjonzuxa2ldfzrw63i/20100121/1396946_104643942888_2.jpg",
-                          @"http://bizhi.zhuoku.com/2011/01/09/jingxuan/Jingxuan263.jpg",
-                          @"http://img.taopic.com/uploads/allimg/131113/235002-13111309532260.jpg",
-                          @"http://pic54.nipic.com/file/20141204/19902974_135858226000_2.jpg"
-                          ];
-        
-        for (NSString *url in urls) {
-            CHCardItemModel *itemModel = [[CHCardItemModel alloc] init];
-            itemModel.imagename = url;
-            [self.dataArray addObject:itemModel];
-        }
-    }
 }
 
 -(void)leftBlack{
@@ -187,19 +207,18 @@
 
 -(void)toolClick1{
     [self loadData];
-    [self.cardView reloadData];
 }
 
 -(void)toolClick2{
-    [self.cardView deleteTheTopItemViewWithLeft:YES];
+   
 }
 
 -(void)toolClick3{
-    [self.cardView superLikeItem];
+    
 }
 
 -(void)toolClick4{
-    [self.cardView deleteTheTopItemViewWithLeft:NO];
+    
 }
 
 -(void)toolClick5{
@@ -212,15 +231,8 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
-- (void)cardView:(CHCardView *)cardView didClickItemAtIndex:(NSInteger)index {
-    [self setScreenViewData:index];
-}
-
 -(void)setScreenViewData:(NSInteger)index{
     self.screenView.hidden=NO;
-    CHCardItemModel *itemModel = (CHCardItemModel *)[self.dataArray objectAtIndex:index];
-    self.screenImgView.urlImages=@[itemModel.imagename];
-//    [self.screenImgView sd_setImageWithURL:[NSURL URLWithString:itemModel.imagename] placeholderImage:[UIImage imageNamed:@"1"]];
     [self setToolsHidden:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     [self.view setNeedsLayout];
@@ -242,11 +254,6 @@
     }
 }
 
-#pragma mark - CHCardViewDelegate
-- (NSInteger)numberOfItemViewsInCardView:(CHCardView *)cardView {
-    return self.dataArray.count;
-}
-
 #pragma mark - SPCarouselViewDelegate
 - (void)carouselView:(SPCarouselView *)carouselView clickedImageAtIndex:(NSUInteger)index {
     NSLog(@"代理方式:点击了第%zd张图片",index);
@@ -254,6 +261,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    int page = scrollView.contentOffset.x / scrollView.frame.size.width;
     if (scrollView==self.screenView) {
         CGFloat width = self.view.frame.size.width;
         
@@ -270,14 +278,8 @@
         }
         //}
     }else if(scrollView==self.screenvideoScrollView){
-        int page = scrollView.contentOffset.x / scrollView.frame.size.width;
         self.screenLabel.text=[NSString stringWithFormat:@"%d/%ld",page+1,(long)_videoPageTotal];
     }
-    
-    
-    
-    
-    
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -286,13 +288,6 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     //self.screenImgView.autoScroll = YES;
-}
-
-
-- (CHCardItemView *)cardView:(CHCardView *)cardView itemViewAtIndex:(NSInteger)index {
-    CHCardItemCustomView *itemView = [[CHCardItemCustomView alloc] initWithFrame:cardView.bounds];
-    itemView.itemModel = self.dataArray[index];
-    return itemView;
 }
 
 -(UIView *)headerView{
@@ -404,15 +399,6 @@
     return _dataArray;
 }
 
-- (CHCardView *)cardView {
-    if (!_cardView) {
-        CHCardView *cardView = [[CHCardView alloc] initWithFrame:CGRectMake(10*SCREEN_RADIO, CGRectGetMaxY(self.titleLabel.frame)+23*SCREEN_RADIO, SCREEN_WIDTH-20*SCREEN_RADIO, SCREEN_HEIGHT-160*SCREEN_RADIO)];
-        _cardView = cardView;
-        cardView.delegate = self;
-        cardView.dataSource = self;
-    }
-    return _cardView;
-}
 
 -(UIScrollView *)screenView{
     if (!_screenView) {
@@ -577,5 +563,21 @@
     return _screenvideoScrollView;
 }
 
+-(CardScrollView *)cardScrollView{
+    if (!_cardScrollView) {
+        _cardScrollView=[[CardScrollView alloc] initWithFrame:CGRectMake(0, 87*SCREEN_RADIO, SCREEN_WIDTH, SCREEN_HEIGHT-174*SCREEN_RADIO)];
+        _cardScrollView.cardDelegate = self;
+        _cardScrollView.cardDataSource = self;
+    }
+    
+    return _cardScrollView;
+}
 
+-(NSMutableArray *)cards{
+    if (!_cards) {
+        _cards=[NSMutableArray array];
+    }
+    
+    return _cards;
+}
 @end
