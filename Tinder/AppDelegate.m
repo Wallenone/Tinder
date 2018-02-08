@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomeIndexViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -16,6 +17,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

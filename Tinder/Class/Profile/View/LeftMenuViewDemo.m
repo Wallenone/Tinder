@@ -11,6 +11,7 @@
 #import "LeftMenuViewDemo.h"
 #import "EZJFastTableView.h"
 #import "LeftMenuCell.h"
+#import "UIProfileHomeViewController.h"
 @interface LeftMenuViewDemo (){
     NSInteger _currentTag;
 }
@@ -19,6 +20,7 @@
 @property(nonatomic,strong)UILabel *nickNameLabel;
 @property(nonatomic,strong)UILabel *contentLabel;
 @property(nonatomic,strong)UIImageView *pitImgView;
+@property(nonatomic,strong)UIButton *profileBtn;
 @property(nonatomic,strong)EZJFastTableView *tbv;
 @property(nonatomic,strong)UIView *footerView;
 @end
@@ -42,12 +44,19 @@
     [self addSubview:self.nickNameLabel];
     [self addSubview:self.contentLabel];
     [self addSubview:self.pitImgView];
+    [self addSubview:self.profileBtn];
     [self addSubview:self.tbv];
     [self addSubview:self.footerView];
 }
 
 -(void)setData{
     [self.tbv selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+}
+
+-(void)profileClick{
+    [[TinerCommonControl sharedManager] hideProfile];
+    UIProfileHomeViewController *profileVC=[[UIProfileHomeViewController alloc] init];
+    [[CGCommonToolsNode getCurrentVC].navigationController pushViewController:profileVC animated:YES];
 }
 
 -(void)settingClick{
@@ -107,6 +116,15 @@
     return _pitImgView;
 }
 
+-(UIButton *)profileBtn{
+    if(!_profileBtn){
+        _profileBtn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, CGRectGetMaxY(self.contentLabel.frame)+56*SCREEN_RADIO)];
+        [_profileBtn addTarget:self action:@selector(profileClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _profileBtn;
+}
+
 -(EZJFastTableView *)tbv{
     if (!_tbv) {
        
@@ -118,7 +136,7 @@
         _tbv.separatorStyle=UITableViewCellSeparatorStyleNone;
         _tbv.scrollEnabled=NO;
         //给tableview赋值
-        [_tbv setDataArray:@[@{@"icon":@"ico-Inbox",@"text":@"Index",@"width":@"21",@"height":@"23"},@{@"icon":@"ico-draft",@"text":@"Drafts",@"width":@"21",@"height":@"20"},@{@"icon":@"ico-star",@"text":@"Starred",@"width":@"18",@"height":@"18"},@{@"icon":@"ico-sent",@"text":@"Sent",@"width":@"23.9",@"height":@"21.1"},@{@"icon":@"ico-trash",@"text":@"Trash",@"width":@"20",@"height":@"23"},@{@"icon":@"ico-archive",@"text":@"Archive",@"width":@"23",@"height":@"21"}]];
+        [_tbv setDataArray:@[@{@"icon":@"ico-Inbox",@"text":@"Tinder",@"width":@"21",@"height":@"23"},@{@"icon":@"ico-draft",@"text":@"Drafts",@"width":@"21",@"height":@"20"},@{@"icon":@"ico-star",@"text":@"Starred",@"width":@"18",@"height":@"18"},@{@"icon":@"ico-sent",@"text":@"Sent",@"width":@"23.9",@"height":@"21.1"},@{@"icon":@"ico-trash",@"text":@"Trash",@"width":@"20",@"height":@"23"},@{@"icon":@"ico-archive",@"text":@"Archive",@"width":@"23",@"height":@"21"}]];
         
         [_tbv onBuildCell:^(id cellData,NSString *cellIdentifier,NSIndexPath *index) {
             LeftMenuCell *cell=[[LeftMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier WithModel:cellData];

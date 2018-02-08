@@ -79,7 +79,7 @@
         card.center = [self centerForCardWithIndex:index];
         card.tag = index;
         UIImageView *imgview=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, card.frame.size.width, card.frame.size.height)];
-        imgview.image=[UIImage imageNamed:@"1"];
+        [imgview sd_setImageWithURL:[NSURL URLWithString:@"http://n.sinaimg.cn/translate/w600h337/20180208/LdC4-fyrkuxs0818998.jpg"]];
         [card addSubview:imgview];
         
         UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];

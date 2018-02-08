@@ -15,4 +15,5 @@ target 'Tinder' do
   pod 'Masonry'
   pod 'UICommonTools'
   pod 'WJPlayer'
+  pod 'IQKeyboardManager'
 end

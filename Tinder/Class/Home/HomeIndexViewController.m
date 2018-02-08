@@ -70,7 +70,7 @@
 -(void)addNavView{
     ProfileIndexView *menu = [ProfileIndexView MenuViewWithDependencyView:self.view MenuView:self.leftDemo isShowCoverView:YES];
     self.profileVC = menu;
-    
+    [TinerCommonControl sharedManager].profileVC=menu;
     [self.view addSubview:self.headerView];
     [self.headerView addSubview:self.titleLabel];
     [self.headerView addSubview:self.leftBtn];
@@ -158,7 +158,7 @@
 }
 
 - (void)clickItem:(NSInteger)index{
-    
+    [self setScreenViewData:index];
 }
 
 -(void)setVideoScrollData{
@@ -228,10 +228,12 @@
 -(void)closeScreenClick{
     [self setToolsHidden:YES];
     self.screenView.hidden=YES;
+    self.cardScrollView.hidden=NO;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 -(void)setScreenViewData:(NSInteger)index{
+    self.cardScrollView.hidden=YES;
     self.screenView.hidden=NO;
     [self setToolsHidden:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
@@ -427,6 +429,8 @@
         // 属性设置
         _screenImgView.delegate=self;
         _screenImgView.autoScroll = NO;
+        _screenImgView.urlImages=@[@"http://n.sinaimg.cn/translate/w600h337/20180208/LdC4-fyrkuxs0818998.jpg"];
+        _screenImgView.userInteractionEnabled=NO;
     }
     
     return _screenImgView;

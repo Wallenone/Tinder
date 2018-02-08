@@ -21,6 +21,11 @@
 		E57EEDAD200629FF007D0FC1 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDAC200629FF007D0FC1 /* LeftMenuCell.m */; };
 		E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57F05A52009F81100ECDAC0 /* SPCarouselView.m */; };
 		E5CD83D32029B1F400F3A90A /* CardScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CD83D22029B1F400F3A90A /* CardScrollView.m */; };
+		E5F34CAD202C277F0020031E /* UIProfileHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CAC202C277F0020031E /* UIProfileHomeViewController.m */; };
+		E5F34CB1202C303A0020031E /* TinerCommonControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CB0202C303A0020031E /* TinerCommonControl.m */; };
+		E5F34CB4202C3C3A0020031E /* UICustomProfileTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CB3202C3C3A0020031E /* UICustomProfileTextView.m */; };
+		E5F34CB7202C573D0020031E /* WYGenderPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CB6202C573D0020031E /* WYGenderPickerView.m */; };
+		E5F34CBA202C5F9B0020031E /* WYBirthdayPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CB8202C5F9B0020031E /* WYBirthdayPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,16 @@
 		E59474FA1FEB97D800F1DFBD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E5CD83D12029B1F400F3A90A /* CardScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardScrollView.h; sourceTree = "<group>"; };
 		E5CD83D22029B1F400F3A90A /* CardScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardScrollView.m; sourceTree = "<group>"; };
+		E5F34CAB202C277F0020031E /* UIProfileHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIProfileHomeViewController.h; sourceTree = "<group>"; };
+		E5F34CAC202C277F0020031E /* UIProfileHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIProfileHomeViewController.m; sourceTree = "<group>"; };
+		E5F34CAF202C303A0020031E /* TinerCommonControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinerCommonControl.h; sourceTree = "<group>"; };
+		E5F34CB0202C303A0020031E /* TinerCommonControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TinerCommonControl.m; sourceTree = "<group>"; };
+		E5F34CB2202C3C3A0020031E /* UICustomProfileTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICustomProfileTextView.h; sourceTree = "<group>"; };
+		E5F34CB3202C3C3A0020031E /* UICustomProfileTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICustomProfileTextView.m; sourceTree = "<group>"; };
+		E5F34CB5202C573D0020031E /* WYGenderPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYGenderPickerView.h; sourceTree = "<group>"; };
+		E5F34CB6202C573D0020031E /* WYGenderPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYGenderPickerView.m; sourceTree = "<group>"; };
+		E5F34CB8202C5F9B0020031E /* WYBirthdayPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYBirthdayPickerView.m; sourceTree = "<group>"; };
+		E5F34CB9202C5F9B0020031E /* WYBirthdayPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYBirthdayPickerView.h; sourceTree = "<group>"; };
 		F9D40BD9EA1D3C31FB22E514 /* libPods-Tinder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tinder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -179,6 +194,12 @@
 				E57EEDA4200608F0007D0FC1 /* ProfileIndexView.m */,
 				E57EEDA6200609A7007D0FC1 /* LeftMenuViewDemo.h */,
 				E57EEDA7200609A7007D0FC1 /* LeftMenuViewDemo.m */,
+				E5F34CB2202C3C3A0020031E /* UICustomProfileTextView.h */,
+				E5F34CB3202C3C3A0020031E /* UICustomProfileTextView.m */,
+				E5F34CB5202C573D0020031E /* WYGenderPickerView.h */,
+				E5F34CB6202C573D0020031E /* WYGenderPickerView.m */,
+				E5F34CB9202C5F9B0020031E /* WYBirthdayPickerView.h */,
+				E5F34CB8202C5F9B0020031E /* WYBirthdayPickerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,6 +225,7 @@
 		E59474F81FEB967800F1DFBD /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				E5F34CAE202C30060020031E /* Common */,
 				E59475041FEBA10700F1DFBD /* Message */,
 				E59475051FEBA10700F1DFBD /* Profile */,
 				E59474F91FEB969700F1DFBD /* Home */,
@@ -232,6 +254,7 @@
 		E59475051FEBA10700F1DFBD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E5F34CAA202C275A0020031E /* Controller */,
 				E57EEDAA200629D5007D0FC1 /* Cell */,
 				E57EEDA9200629D5007D0FC1 /* View */,
 			);
@@ -245,6 +268,24 @@
 				E5CD83D22029B1F400F3A90A /* CardScrollView.m */,
 			);
 			path = CardScrollView;
+			sourceTree = "<group>";
+		};
+		E5F34CAA202C275A0020031E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E5F34CAB202C277F0020031E /* UIProfileHomeViewController.h */,
+				E5F34CAC202C277F0020031E /* UIProfileHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E5F34CAE202C30060020031E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E5F34CAF202C303A0020031E /* TinerCommonControl.h */,
+				E5F34CB0202C303A0020031E /* TinerCommonControl.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,9 +481,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E57EED9F2005F883007D0FC1 /* HomeIndexViewController.m in Sources */,
+				E5F34CB7202C573D0020031E /* WYGenderPickerView.m in Sources */,
+				E5F34CB1202C303A0020031E /* TinerCommonControl.m in Sources */,
 				E57EEDAD200629FF007D0FC1 /* LeftMenuCell.m in Sources */,
 				E57EEDA5200608F0007D0FC1 /* ProfileIndexView.m in Sources */,
 				E51C106F1FE7693900CA522F /* main.m in Sources */,
+				E5F34CAD202C277F0020031E /* UIProfileHomeViewController.m in Sources */,
+				E5F34CB4202C3C3A0020031E /* UICustomProfileTextView.m in Sources */,
+				E5F34CBA202C5F9B0020031E /* WYBirthdayPickerView.m in Sources */,
 				E57EEDA8200609A7007D0FC1 /* LeftMenuViewDemo.m in Sources */,
 				E51C10611FE7693900CA522F /* AppDelegate.m in Sources */,
 				E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */,

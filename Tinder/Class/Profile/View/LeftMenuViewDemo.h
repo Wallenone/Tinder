@@ -7,7 +7,7 @@
 //
  
 #import <UIKit/UIKit.h>
-
+#import "ProfileIndexView.h"
 
 @interface LeftMenuViewDemo : UIView
 
