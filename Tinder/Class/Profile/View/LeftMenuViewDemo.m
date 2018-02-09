@@ -12,6 +12,9 @@
 #import "EZJFastTableView.h"
 #import "LeftMenuCell.h"
 #import "UIProfileHomeViewController.h"
+#import "UISettingViewController.h"
+#import "UILikeFriendsViewController.h"
+#import "UINoLikeFriendsViewController.h"
 @interface LeftMenuViewDemo (){
     NSInteger _currentTag;
 }
@@ -136,7 +139,7 @@
         _tbv.separatorStyle=UITableViewCellSeparatorStyleNone;
         _tbv.scrollEnabled=NO;
         //给tableview赋值
-        [_tbv setDataArray:@[@{@"icon":@"ico-Inbox",@"text":@"Tinder",@"width":@"21",@"height":@"23"},@{@"icon":@"ico-draft",@"text":@"Drafts",@"width":@"21",@"height":@"20"},@{@"icon":@"ico-star",@"text":@"Starred",@"width":@"18",@"height":@"18"},@{@"icon":@"ico-sent",@"text":@"Sent",@"width":@"23.9",@"height":@"21.1"},@{@"icon":@"ico-trash",@"text":@"Trash",@"width":@"20",@"height":@"23"},@{@"icon":@"ico-archive",@"text":@"Archive",@"width":@"23",@"height":@"21"}]];
+        [_tbv setDataArray:@[@{@"icon":@"ico-Inbox",@"text":@"Tinder",@"width":@"21",@"height":@"23"},@{@"icon":@"ico-draft",@"text":@"Setting",@"width":@"21",@"height":@"20"},@{@"icon":@"ico-star",@"text":@"Like Friends",@"width":@"18",@"height":@"18"},@{@"icon":@"ico-sent",@"text":@"UNLike Friends",@"width":@"23.9",@"height":@"21.1"},@{@"icon":@"ico-trash",@"text":@"Trash",@"width":@"20",@"height":@"23"},@{@"icon":@"ico-archive",@"text":@"Archive",@"width":@"23",@"height":@"21"}]];
         
         [_tbv onBuildCell:^(id cellData,NSString *cellIdentifier,NSIndexPath *index) {
             LeftMenuCell *cell=[[LeftMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier WithModel:cellData];
@@ -156,7 +159,19 @@
         //cellData 是当前行的数据
         
         [_tbv onCellSelected:^(NSIndexPath *indexPath, id cellData) {
-            NSLog(@"click");
+            [[TinerCommonControl sharedManager] hideProfile];
+            if (indexPath.row==0) {
+                [[CGCommonToolsNode getCurrentVC].navigationController popToRootViewControllerAnimated:YES];
+            }else if (indexPath.row==1){
+                UISettingViewController *settingVC=[[UISettingViewController alloc] init];
+                [[CGCommonToolsNode getCurrentVC].navigationController pushViewController:settingVC animated:YES];
+            }else if (indexPath.row==2){
+                UILikeFriendsViewController *likeVC=[[UILikeFriendsViewController alloc] init];
+                [[CGCommonToolsNode getCurrentVC].navigationController pushViewController:likeVC animated:YES];
+            }else if (indexPath.row==3){
+                UINoLikeFriendsViewController *noLickVC=[[UINoLikeFriendsViewController alloc] init];
+                [[CGCommonToolsNode getCurrentVC].navigationController pushViewController:noLickVC animated:YES];
+            }
         }];
     }
     

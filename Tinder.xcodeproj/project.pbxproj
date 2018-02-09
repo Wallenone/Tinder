@@ -15,6 +15,10 @@
 		E51C106F1FE7693900CA522F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C106E1FE7693900CA522F /* main.m */; };
 		E51C10791FE7693900CA522F /* TinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C10781FE7693900CA522F /* TinderTests.m */; };
 		E51C10841FE7693900CA522F /* TinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C10831FE7693900CA522F /* TinderUITests.m */; };
+		E54C3693202D7FA900D2D20A /* UISettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C3692202D7FA900D2D20A /* UISettingViewController.m */; };
+		E54C3696202D96D400D2D20A /* UILikeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C3695202D96D400D2D20A /* UILikeFriendsViewController.m */; };
+		E54C3699202D9D8500D2D20A /* UINoLikeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C3698202D9D8500D2D20A /* UINoLikeFriendsViewController.m */; };
+		E54C369D202D9F2300D2D20A /* UIMessageIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C369C202D9F2300D2D20A /* UIMessageIndexViewController.m */; };
 		E57EED9F2005F883007D0FC1 /* HomeIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EED9E2005F883007D0FC1 /* HomeIndexViewController.m */; };
 		E57EEDA5200608F0007D0FC1 /* ProfileIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDA4200608F0007D0FC1 /* ProfileIndexView.m */; };
 		E57EEDA8200609A7007D0FC1 /* LeftMenuViewDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDA7200609A7007D0FC1 /* LeftMenuViewDemo.m */; };
@@ -62,6 +66,14 @@
 		E51C107F1FE7693900CA522F /* TinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51C10831FE7693900CA522F /* TinderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TinderUITests.m; sourceTree = "<group>"; };
 		E51C10851FE7693900CA522F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E54C3691202D7FA900D2D20A /* UISettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UISettingViewController.h; sourceTree = "<group>"; };
+		E54C3692202D7FA900D2D20A /* UISettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UISettingViewController.m; sourceTree = "<group>"; };
+		E54C3694202D96D400D2D20A /* UILikeFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UILikeFriendsViewController.h; sourceTree = "<group>"; };
+		E54C3695202D96D400D2D20A /* UILikeFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UILikeFriendsViewController.m; sourceTree = "<group>"; };
+		E54C3697202D9D8500D2D20A /* UINoLikeFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINoLikeFriendsViewController.h; sourceTree = "<group>"; };
+		E54C3698202D9D8500D2D20A /* UINoLikeFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINoLikeFriendsViewController.m; sourceTree = "<group>"; };
+		E54C369B202D9F2300D2D20A /* UIMessageIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIMessageIndexViewController.h; sourceTree = "<group>"; };
+		E54C369C202D9F2300D2D20A /* UIMessageIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIMessageIndexViewController.m; sourceTree = "<group>"; };
 		E57EED9D2005F883007D0FC1 /* HomeIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeIndexViewController.h; sourceTree = "<group>"; };
 		E57EED9E2005F883007D0FC1 /* HomeIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeIndexViewController.m; sourceTree = "<group>"; };
 		E57EEDA3200608F0007D0FC1 /* ProfileIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileIndexView.h; sourceTree = "<group>"; };
@@ -187,6 +199,15 @@
 			path = TinderUITests;
 			sourceTree = "<group>";
 		};
+		E54C369A202D9EF900D2D20A /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E54C369B202D9F2300D2D20A /* UIMessageIndexViewController.h */,
+				E54C369C202D9F2300D2D20A /* UIMessageIndexViewController.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		E57EEDA9200629D5007D0FC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,8 +246,8 @@
 		E59474F81FEB967800F1DFBD /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				E54C369A202D9EF900D2D20A /* Message */,
 				E5F34CAE202C30060020031E /* Common */,
-				E59475041FEBA10700F1DFBD /* Message */,
 				E59475051FEBA10700F1DFBD /* Profile */,
 				E59474F91FEB969700F1DFBD /* Home */,
 			);
@@ -242,13 +263,6 @@
 				E57EED9E2005F883007D0FC1 /* HomeIndexViewController.m */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		E59475041FEBA10700F1DFBD /* Message */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		E59475051FEBA10700F1DFBD /* Profile */ = {
@@ -273,8 +287,14 @@
 		E5F34CAA202C275A0020031E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E54C3697202D9D8500D2D20A /* UINoLikeFriendsViewController.h */,
+				E54C3698202D9D8500D2D20A /* UINoLikeFriendsViewController.m */,
 				E5F34CAB202C277F0020031E /* UIProfileHomeViewController.h */,
 				E5F34CAC202C277F0020031E /* UIProfileHomeViewController.m */,
+				E54C3691202D7FA900D2D20A /* UISettingViewController.h */,
+				E54C3692202D7FA900D2D20A /* UISettingViewController.m */,
+				E54C3694202D96D400D2D20A /* UILikeFriendsViewController.h */,
+				E54C3695202D96D400D2D20A /* UILikeFriendsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -483,8 +503,11 @@
 				E57EED9F2005F883007D0FC1 /* HomeIndexViewController.m in Sources */,
 				E5F34CB7202C573D0020031E /* WYGenderPickerView.m in Sources */,
 				E5F34CB1202C303A0020031E /* TinerCommonControl.m in Sources */,
+				E54C369D202D9F2300D2D20A /* UIMessageIndexViewController.m in Sources */,
+				E54C3693202D7FA900D2D20A /* UISettingViewController.m in Sources */,
 				E57EEDAD200629FF007D0FC1 /* LeftMenuCell.m in Sources */,
 				E57EEDA5200608F0007D0FC1 /* ProfileIndexView.m in Sources */,
+				E54C3696202D96D400D2D20A /* UILikeFriendsViewController.m in Sources */,
 				E51C106F1FE7693900CA522F /* main.m in Sources */,
 				E5F34CAD202C277F0020031E /* UIProfileHomeViewController.m in Sources */,
 				E5F34CB4202C3C3A0020031E /* UICustomProfileTextView.m in Sources */,
@@ -492,6 +515,7 @@
 				E57EEDA8200609A7007D0FC1 /* LeftMenuViewDemo.m in Sources */,
 				E51C10611FE7693900CA522F /* AppDelegate.m in Sources */,
 				E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */,
+				E54C3699202D9D8500D2D20A /* UINoLikeFriendsViewController.m in Sources */,
 				E5CD83D32029B1F400F3A90A /* CardScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

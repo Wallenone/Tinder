@@ -11,7 +11,7 @@
 #import "LeftMenuViewDemo.h"
 #import "SPCarouselView.h"
 #import "CardScrollView.h"
-
+#import "UIMessageIndexViewController.h"
 @interface HomeIndexViewController ()<UIScrollViewDelegate,SPCarouselViewDelegate,CardScrollViewDelegate,CardScrollViewDataSource>{
     CGFloat _videoWidth;
     NSInteger _videoPageTotal;
@@ -52,11 +52,12 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self.tabBarController.tabBar setHidden:YES];
-    [self.cardScrollView loadCard];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _videoWidth=(SCREEN_WIDTH-50*SCREEN_RADIO)/3;
     _videoPageTotal=7;
     _kCarouselViewH=SCREEN_HEIGHT/5*3;
@@ -65,6 +66,8 @@
     [self addSubViews];
     // data
     [self loadData];
+    
+    [self.cardScrollView loadCard];
 }
 
 -(void)addNavView{
@@ -197,7 +200,8 @@
 }
 
 -(void)rightClick{
-    
+    UIMessageIndexViewController *messageVC=[[UIMessageIndexViewController alloc] init];
+    [self.navigationController pushViewController:messageVC animated:YES];
 }
 
 -(void)LeftMenuViewClick:(NSInteger)tag{
