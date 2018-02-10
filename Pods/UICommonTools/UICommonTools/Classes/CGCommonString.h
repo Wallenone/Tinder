@@ -16,4 +16,5 @@
 + (NSString*)dictionaryToJson:(NSDictionary *)dic;
 //字符串转字典
 +(NSDictionary *)parseJSONStringToNSDictionary:(NSString *)JSONString;
++(CAGradientLayer *)setChangColorWithView:(UIView *)view andColorStart:(UIColor *)startColor andEndColor:(UIColor *)endColor;
 @end

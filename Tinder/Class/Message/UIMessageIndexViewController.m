@@ -27,7 +27,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)viewDidLoad {
@@ -51,14 +51,6 @@
     [self.view addSubview:self.contentLabel1];
 }
 
--(UIView *)headerView{
-    if (!_headerView) {
-        _headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-        _headerView.backgroundColor=[UIColor clearColor];
-    }
-    
-    return _headerView;
-}
 
 -(void)leftBlack{
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -77,12 +69,22 @@
     
 }
 
+-(UIView *)headerView{
+    if (!_headerView) {
+        _headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:_headerView andColorStart:[UIColor getColor:@"E87975"] andEndColor:[UIColor getColor:@"F3C7A1"]];
+        [_headerView.layer insertSublayer:gradient above:0];
+    }
+    
+    return _headerView;
+}
+
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
-        _titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 35*SCREEN_RADIO, SCREEN_WIDTH, 21*SCREEN_RADIO)];
+        _titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 33*SCREEN_RADIO, SCREEN_WIDTH, 20*SCREEN_RADIO)];
         _titleLabel.text=@"Message";
-        _titleLabel.font=[UIFont systemFontOfSize:20*SCREEN_RADIO];
-        _titleLabel.textColor=[UIColor getColor:@"424242"];
+        _titleLabel.font=[UIFont boldSystemFontOfSize:16*SCREEN_RADIO];
+        _titleLabel.textColor=[UIColor getColor:@"ffffff"];
         _titleLabel.textAlignment=NSTextAlignmentCenter;
     }
     
@@ -91,8 +93,8 @@
 
 -(RkyExtendedHitButton *)leftBtn{
     if (!_leftBtn) {
-        _leftBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, 30*SCREEN_RADIO, 12*SCREEN_RADIO, 16*SCREEN_RADIO)];
-        [_leftBtn setImage:[UIImage imageNamed:@"BlackArrowleft"] forState:UIControlStateNormal];
+        _leftBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, 33*SCREEN_RADIO, 15*SCREEN_RADIO, 19*SCREEN_RADIO)];
+        [_leftBtn setImage:[UIImage imageNamed:@"TinderHot"] forState:UIControlStateNormal];
         _leftBtn.hitTestEdgeInsets=UIEdgeInsetsMake(-25,-25,-25,-25);
         [_leftBtn addTarget:self action:@selector(leftBlack) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -102,7 +104,7 @@
 
 -(UILabel *)newlabel{
     if (!_newlabel) {
-        _newlabel=[[UILabel alloc] initWithFrame:CGRectMake(10*SCREEN_RADIO, 64, 0, 13*SCREEN_RADIO)];
+        _newlabel=[[UILabel alloc] initWithFrame:CGRectMake(10*SCREEN_RADIO, 74, 0, 13*SCREEN_RADIO)];
         _newlabel.textColor=[UIColor getColor:@"fd5068"];
         _newlabel.text=@"新的匹配";
         _newlabel.font=[UIFont boldSystemFontOfSize:13*SCREEN_RADIO];

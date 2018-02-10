@@ -18,7 +18,7 @@
     CGFloat _kCarouselViewH;
 }
 @property(nonatomic,strong)UIView *headerView;
-@property(nonatomic,strong)UILabel *titleLabel;
+@property(nonatomic,strong)UIImageView *titleImgView;
 @property(nonatomic,strong)RkyExtendedHitButton *leftBtn;
 @property(nonatomic,strong)RkyExtendedHitButton *rightBtn;
 @property(nonatomic,strong)ProfileIndexView *profileVC;
@@ -61,7 +61,7 @@
     _videoWidth=(SCREEN_WIDTH-50*SCREEN_RADIO)/3;
     _videoPageTotal=7;
     _kCarouselViewH=SCREEN_HEIGHT/5*3;
-    self.view.backgroundColor=[UIColor getColor:@"3D457F"];
+    self.view.backgroundColor=[UIColor getColor:@"f2f7f8"];
     [self addNavView];
     [self addSubViews];
     // data
@@ -75,7 +75,7 @@
     self.profileVC = menu;
     [TinerCommonControl sharedManager].profileVC=menu;
     [self.view addSubview:self.headerView];
-    [self.headerView addSubview:self.titleLabel];
+    [self.headerView addSubview:self.titleImgView];
     [self.headerView addSubview:self.leftBtn];
     [self.headerView addSubview:self.rightBtn];
 }
@@ -299,28 +299,26 @@
 -(UIView *)headerView{
     if (!_headerView) {
         _headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-        _headerView.backgroundColor=[UIColor clearColor];
+        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:_headerView andColorStart:[UIColor getColor:@"E87975"] andEndColor:[UIColor getColor:@"F3C7A1"]];
+        [_headerView.layer insertSublayer:gradient above:0];
     }
     
     return _headerView;
 }
 
--(UILabel *)titleLabel{
-    if (!_titleLabel) {
-        _titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 35*SCREEN_RADIO, SCREEN_WIDTH, 21*SCREEN_RADIO)];
-        _titleLabel.text=@"Index";
-        _titleLabel.font=[UIFont systemFontOfSize:20*SCREEN_RADIO];
-        _titleLabel.textColor=[UIColor getColor:@"ffffff"];
-        _titleLabel.textAlignment=NSTextAlignmentCenter;
+-(UIImageView *)titleImgView{
+    if (!_titleImgView) {
+        _titleImgView=[[UIImageView  alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-7.5*SCREEN_RADIO, 33*SCREEN_RADIO, 15*SCREEN_RADIO, 19*SCREEN_RADIO)];
+        _titleImgView.image=[UIImage imageNamed:@"TinderHot"];
     }
     
-    return _titleLabel;
+    return _titleImgView;
 }
 
 -(RkyExtendedHitButton *)leftBtn{
     if (!_leftBtn) {
-        _leftBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(20*SCREEN_RADIO, 37*SCREEN_RADIO, 22*SCREEN_RADIO, 17*SCREEN_RADIO)];
-        [_leftBtn setImage:[UIImage imageNamed:@"ico-sidebar"] forState:UIControlStateNormal];
+        _leftBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(20*SCREEN_RADIO, 37*SCREEN_RADIO, 18*SCREEN_RADIO, 8*SCREEN_RADIO)];
+        [_leftBtn setImage:[UIImage imageNamed:@"hamburger_icon"] forState:UIControlStateNormal];
         _leftBtn.hitTestEdgeInsets=UIEdgeInsetsMake(-25,-25,-25,-25);
         [_leftBtn addTarget:self action:@selector(leftBlack) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -330,8 +328,8 @@
 
 -(RkyExtendedHitButton *)rightBtn{
     if (!_rightBtn) {
-        _rightBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-42*SCREEN_RADIO, 35*SCREEN_RADIO, 22*SCREEN_RADIO, 21*SCREEN_RADIO)];
-        [_rightBtn setImage:[UIImage imageNamed:@"ico-plus"] forState:UIControlStateNormal];
+        _rightBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-42*SCREEN_RADIO, 30*SCREEN_RADIO, 22*SCREEN_RADIO, 22*SCREEN_RADIO)];
+        [_rightBtn setImage:[UIImage imageNamed:@"world_icon"] forState:UIControlStateNormal];
         _rightBtn.hitTestEdgeInsets=UIEdgeInsetsMake(-25,-25,-25,-25);
         [_rightBtn addTarget:self action:@selector(rightClick) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -349,7 +347,7 @@
 
 -(UIButton *)tool1{
     if (!_tool1) {
-        _tool1=[[UIButton alloc] initWithFrame:CGRectMake(24*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+19*SCREEN_RADIO, 44*SCREEN_RADIO, 44*SCREEN_RADIO)];
+        _tool1=[[UIButton alloc] initWithFrame:CGRectMake(24*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+9*SCREEN_RADIO, 44*SCREEN_RADIO, 44*SCREEN_RADIO)];
         [_tool1 setImage:[UIImage imageNamed:@"tools_Rewind"] forState:UIControlStateNormal];
         [_tool1 addTarget:self action:@selector(toolClick1) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -359,7 +357,7 @@
 
 -(UIButton *)tool2{
     if (!_tool2) {
-        _tool2=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool1.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+14*SCREEN_RADIO, 54*SCREEN_RADIO, 54*SCREEN_RADIO)];
+        _tool2=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool1.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+4*SCREEN_RADIO, 54*SCREEN_RADIO, 54*SCREEN_RADIO)];
         [_tool2 setImage:[UIImage imageNamed:@"tools_Nope"] forState:UIControlStateNormal];
         [_tool2 addTarget:self action:@selector(toolClick2) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -369,7 +367,7 @@
 
 -(UIButton *)tool3{
     if (!_tool3) {
-        _tool3=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool2.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+ 19*SCREEN_RADIO, 44*SCREEN_RADIO, 44*SCREEN_RADIO)];
+        _tool3=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool2.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+9*SCREEN_RADIO, 44*SCREEN_RADIO, 44*SCREEN_RADIO)];
         [_tool3 setImage:[UIImage imageNamed:@"tools_SuperLike"] forState:UIControlStateNormal];
         [_tool3 addTarget:self action:@selector(toolClick3) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -379,7 +377,7 @@
 
 -(UIButton *)tool4{
     if (!_tool4) {
-        _tool4=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool3.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+14*SCREEN_RADIO, 54*SCREEN_RADIO, 54*SCREEN_RADIO)];
+        _tool4=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool3.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+4*SCREEN_RADIO, 54*SCREEN_RADIO, 54*SCREEN_RADIO)];
         [_tool4 setImage:[UIImage imageNamed:@"tools_Like"] forState:UIControlStateNormal];
         [_tool4 addTarget:self action:@selector(toolClick4) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -389,7 +387,7 @@
 
 -(UIButton *)tool5{
     if (!_tool5) {
-        _tool5=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool4.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+19*SCREEN_RADIO, 44*SCREEN_RADIO, 44*SCREEN_RADIO)];
+        _tool5=[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.tool4.frame)+20*SCREEN_RADIO, SCREEN_HEIGHT-71*SCREEN_RADIO+9*SCREEN_RADIO, 44*SCREEN_RADIO, 44*SCREEN_RADIO)];
         [_tool5 setImage:[UIImage imageNamed:@"tools_Boost"] forState:UIControlStateNormal];
         [_tool5 addTarget:self action:@selector(toolClick5) forControlEvents:UIControlEventTouchUpInside];
         

@@ -28,9 +28,12 @@
         _iconWidth=[model floatForKey:@"width"];
         _iconHeight=[model floatForKey:@"height"];
         UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 245*SCREEN_RADIO, 45*SCREEN_RADIO)];
-        view.layer.cornerRadius=8;
-        view.backgroundColor=[UIColor colorWithRed:135/255.0f green:141/255.0f blue:209/255.0f alpha:0.52];
         self.selectedBackgroundView = view;
+        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:view andColorStart:[UIColor getColor:@"E87975"] andEndColor:[UIColor getColor:@"F3C7A1"]];
+        [view.layer insertSublayer:gradient above:0];
+        gradient.cornerRadius=8;
+        
+        
         [self creatSubView];
     }
     
@@ -39,7 +42,7 @@
 
 
 - (void)setFrame:(CGRect)frame{
-    frame.origin.x += 10;
+    frame.origin.x += 0;
     frame.origin.y += 10;
     frame.size.height -= 10;
     frame.size.width -= 20;
@@ -48,7 +51,7 @@
 
 
 -(void)creatSubView{
-    [self addSubview:self.iconView];
+    //[self addSubview:self.iconView];
     [self addSubview:self.contentLabel];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -68,10 +71,10 @@
 
 -(UILabel *)contentLabel{
     if (!_contentLabel) {
-        _contentLabel=[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.iconView.frame)+34*SCREEN_RADIO, 15*SCREEN_RADIO, 0, 16*SCREEN_RADIO)];
+        _contentLabel=[[UILabel alloc] initWithFrame:CGRectMake(44*SCREEN_RADIO, 12*SCREEN_RADIO, 0, 18*SCREEN_RADIO)];
         _contentLabel.text=_content;
         _contentLabel.textColor=[UIColor getColor:@"ffffff"];
-        _contentLabel.font=[UIFont systemFontOfSize:16*SCREEN_RADIO];
+        _contentLabel.font=[UIFont systemFontOfSize:18*SCREEN_RADIO];
         [_contentLabel sizeToFit];
     }
     
