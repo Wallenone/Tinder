@@ -66,7 +66,6 @@
     [self addSubViews];
     // data
     [self loadData];
-    
     [self.cardScrollView loadCard];
 }
 
@@ -317,7 +316,7 @@
 
 -(RkyExtendedHitButton *)leftBtn{
     if (!_leftBtn) {
-        _leftBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(20*SCREEN_RADIO, 37*SCREEN_RADIO, 18*SCREEN_RADIO, 8*SCREEN_RADIO)];
+        _leftBtn=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(20*SCREEN_RADIO, 34*SCREEN_RADIO, 19*SCREEN_RADIO, 17*SCREEN_RADIO)];
         [_leftBtn setImage:[UIImage imageNamed:@"hamburger_icon"] forState:UIControlStateNormal];
         _leftBtn.hitTestEdgeInsets=UIEdgeInsetsMake(-25,-25,-25,-25);
         [_leftBtn addTarget:self action:@selector(leftBlack) forControlEvents:UIControlEventTouchUpInside];
