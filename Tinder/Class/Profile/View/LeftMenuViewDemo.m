@@ -37,7 +37,7 @@
 -(instancetype)initWithFrame:(CGRect)frame{
 
     if(self = [super initWithFrame:frame]){
-        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:self andColorStart:[UIColor getColor:@"323B46"] andEndColor:[UIColor getColor:@"616D7C"]];
+        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:self andColorArrs:@[(__bridge id)[UIColor getColor:@"1C93FB"].CGColor,(__bridge id)[UIColor getColor:@"735EE9"].CGColor,(__bridge id)[UIColor getColor:@"AC3DDF"].CGColor]];
         [self.layer insertSublayer:gradient above:0];
         [self addSubViews];
         [self setData];

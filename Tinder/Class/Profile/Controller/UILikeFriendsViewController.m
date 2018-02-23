@@ -60,7 +60,7 @@
 -(UIView *)headerView{
     if (!_headerView) {
         _headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 122*SCREEN_RADIO)];
-        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:_headerView andColorStart:[UIColor getColor:@"E87975"] andEndColor:[UIColor getColor:@"F3C7A1"]];
+        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:_headerView andColorArrs:@[(__bridge id)[UIColor getColor:@"1C93FB"].CGColor,(__bridge id)[UIColor getColor:@"735EE9"].CGColor,(__bridge id)[UIColor getColor:@"AC3DDF"].CGColor]];
         [_headerView.layer insertSublayer:gradient above:0];
         
         UIButton *likeBtn=[[UIButton alloc] initWithFrame:CGRectMake(0, 84*SCREEN_RADIO, SCREEN_WIDTH/2, 24*SCREEN_RADIO)];

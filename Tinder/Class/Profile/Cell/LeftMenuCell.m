@@ -29,7 +29,7 @@
         _iconHeight=[model floatForKey:@"height"];
         UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 245*SCREEN_RADIO, 45*SCREEN_RADIO)];
         self.selectedBackgroundView = view;
-        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:view andColorStart:[UIColor getColor:@"E87975"] andEndColor:[UIColor getColor:@"F3C7A1"]];
+        CAGradientLayer *gradient = [CGCommonString setChangColorWithView:view andColorArrs:@[(__bridge id)[UIColor getColor:@"1C93FB"].CGColor,(__bridge id)[UIColor getColor:@"735EE9"].CGColor,(__bridge id)[UIColor getColor:@"AC3DDF"].CGColor]];
         [view.layer insertSublayer:gradient above:0];
         gradient.cornerRadius=8;
         

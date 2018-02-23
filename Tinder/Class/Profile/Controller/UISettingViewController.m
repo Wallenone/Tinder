@@ -256,7 +256,7 @@
         
         //09.thumbTintColor : 当前滑块的颜色，默认为白色
         slider.thumbTintColor = [UIColor whiteColor];
-        
+
         //    10.currentMaximumTrackImage : 滑块条最大值处设置的图片
         //    11.currentMinimumTrackImage : 滑块条最小值处设置的图片
         //    12.currentThumbImage: 当前滑块的图片

@@ -15,7 +15,6 @@
 }
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)UIView *headerView;
-@property(nonatomic,strong)RkyExtendedHitButton *leftBack;
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)RkyExtendedHitButton *rightBtn;
 @property(nonatomic,strong)UIView *picView;
@@ -58,7 +57,6 @@
 -(void)addSubViews{
     [self.view addSubview:self.headerView];
     [self.headerView addSubview:self.titleLabel];
-    [self.headerView addSubview:self.leftBack];
     [self.headerView addSubview:self.rightBtn];
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.picView];
@@ -115,10 +113,6 @@
     self.birthDayView.frame=CGRectMake(0, CGRectGetMaxY(self.birthDay.frame)+5*SCREEN_RADIO, SCREEN_WIDTH, 50*SCREEN_RADIO);
     
     [self.scrollView setContentSize:CGSizeMake(SCREEN_WIDTH, CGRectGetMaxY(self.birthDayView.frame)+20*SCREEN_RADIO)];
-}
-
--(void)back{
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)saveClick{
@@ -193,17 +187,6 @@
     }
     
     return _titleLabel;
-}
-
--(RkyExtendedHitButton *)leftBack{
-    if(!_leftBack){
-        _leftBack=[[RkyExtendedHitButton alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, 30*SCREEN_RADIO, 12*SCREEN_RADIO, 16*SCREEN_RADIO)];
-        [_leftBack setImage:[UIImage imageNamed:@"BlackArrowleft"] forState:UIControlStateNormal];
-        [_leftBack addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        _leftBack.hitTestEdgeInsets = UIEdgeInsetsMake(-25, -25, -25, -25);
-    }
-    
-    return _leftBack;
 }
 
 -(RkyExtendedHitButton *)rightBtn{
