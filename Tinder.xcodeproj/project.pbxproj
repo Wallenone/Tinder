@@ -15,9 +15,10 @@
 		E51C106F1FE7693900CA522F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C106E1FE7693900CA522F /* main.m */; };
 		E51C10791FE7693900CA522F /* TinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C10781FE7693900CA522F /* TinderTests.m */; };
 		E51C10841FE7693900CA522F /* TinderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E51C10831FE7693900CA522F /* TinderUITests.m */; };
+		E5422B7B20414DA200D94FFB /* UIFoundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5422B7A20414DA200D94FFB /* UIFoundCell.m */; };
+		E5422B7D204164EA00D94FFB /* UIFoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5422B7C204164EA00D94FFB /* UIFoundViewController.m */; };
 		E54C3693202D7FA900D2D20A /* UISettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C3692202D7FA900D2D20A /* UISettingViewController.m */; };
 		E54C3696202D96D400D2D20A /* UILikeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C3695202D96D400D2D20A /* UILikeFriendsViewController.m */; };
-		E54C3699202D9D8500D2D20A /* UINoLikeFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C3698202D9D8500D2D20A /* UINoLikeFriendsViewController.m */; };
 		E54C369D202D9F2300D2D20A /* UIMessageIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54C369C202D9F2300D2D20A /* UIMessageIndexViewController.m */; };
 		E57766F120401A6900AF23DC /* UILikeFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E57766F020401A6900AF23DC /* UILikeFriendCell.m */; };
 		E57EED9F2005F883007D0FC1 /* HomeIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EED9E2005F883007D0FC1 /* HomeIndexViewController.m */; };
@@ -26,6 +27,7 @@
 		E57EEDAD200629FF007D0FC1 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EEDAC200629FF007D0FC1 /* LeftMenuCell.m */; };
 		E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57F05A52009F81100ECDAC0 /* SPCarouselView.m */; };
 		E5CD83D32029B1F400F3A90A /* CardScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CD83D22029B1F400F3A90A /* CardScrollView.m */; };
+		E5D95DE82041129E0047D133 /* SDRangeSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D95DE72041129D0047D133 /* SDRangeSliderView.m */; };
 		E5F34CAD202C277F0020031E /* UIProfileHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CAC202C277F0020031E /* UIProfileHomeViewController.m */; };
 		E5F34CB1202C303A0020031E /* TinerCommonControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CB0202C303A0020031E /* TinerCommonControl.m */; };
 		E5F34CB4202C3C3A0020031E /* UICustomProfileTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F34CB3202C3C3A0020031E /* UICustomProfileTextView.m */; };
@@ -67,12 +69,14 @@
 		E51C107F1FE7693900CA522F /* TinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51C10831FE7693900CA522F /* TinderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TinderUITests.m; sourceTree = "<group>"; };
 		E51C10851FE7693900CA522F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5422B7920414DA200D94FFB /* UIFoundCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIFoundCell.h; sourceTree = "<group>"; };
+		E5422B7A20414DA200D94FFB /* UIFoundCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIFoundCell.m; sourceTree = "<group>"; };
+		E5422B7C204164EA00D94FFB /* UIFoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFoundViewController.m; sourceTree = "<group>"; };
 		E54C3691202D7FA900D2D20A /* UISettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UISettingViewController.h; sourceTree = "<group>"; };
 		E54C3692202D7FA900D2D20A /* UISettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UISettingViewController.m; sourceTree = "<group>"; };
 		E54C3694202D96D400D2D20A /* UILikeFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UILikeFriendsViewController.h; sourceTree = "<group>"; };
 		E54C3695202D96D400D2D20A /* UILikeFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UILikeFriendsViewController.m; sourceTree = "<group>"; };
-		E54C3697202D9D8500D2D20A /* UINoLikeFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINoLikeFriendsViewController.h; sourceTree = "<group>"; };
-		E54C3698202D9D8500D2D20A /* UINoLikeFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINoLikeFriendsViewController.m; sourceTree = "<group>"; };
+		E54C3697202D9D8500D2D20A /* UIFoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFoundViewController.h; sourceTree = "<group>"; };
 		E54C369B202D9F2300D2D20A /* UIMessageIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIMessageIndexViewController.h; sourceTree = "<group>"; };
 		E54C369C202D9F2300D2D20A /* UIMessageIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIMessageIndexViewController.m; sourceTree = "<group>"; };
 		E57766EF20401A6900AF23DC /* UILikeFriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UILikeFriendCell.h; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 		E59474FA1FEB97D800F1DFBD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E5CD83D12029B1F400F3A90A /* CardScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardScrollView.h; sourceTree = "<group>"; };
 		E5CD83D22029B1F400F3A90A /* CardScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardScrollView.m; sourceTree = "<group>"; };
+		E5D95DE62041129D0047D133 /* SDRangeSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRangeSliderView.h; sourceTree = "<group>"; };
+		E5D95DE72041129D0047D133 /* SDRangeSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRangeSliderView.m; sourceTree = "<group>"; };
 		E5F34CAB202C277F0020031E /* UIProfileHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIProfileHomeViewController.h; sourceTree = "<group>"; };
 		E5F34CAC202C277F0020031E /* UIProfileHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIProfileHomeViewController.m; sourceTree = "<group>"; };
 		E5F34CAF202C303A0020031E /* TinerCommonControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinerCommonControl.h; sourceTree = "<group>"; };
@@ -224,6 +230,8 @@
 				E5F34CB6202C573D0020031E /* WYGenderPickerView.m */,
 				E5F34CB9202C5F9B0020031E /* WYBirthdayPickerView.h */,
 				E5F34CB8202C5F9B0020031E /* WYBirthdayPickerView.m */,
+				E5D95DE62041129D0047D133 /* SDRangeSliderView.h */,
+				E5D95DE72041129D0047D133 /* SDRangeSliderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +243,8 @@
 				E57EEDAC200629FF007D0FC1 /* LeftMenuCell.m */,
 				E57766EF20401A6900AF23DC /* UILikeFriendCell.h */,
 				E57766F020401A6900AF23DC /* UILikeFriendCell.m */,
+				E5422B7920414DA200D94FFB /* UIFoundCell.h */,
+				E5422B7A20414DA200D94FFB /* UIFoundCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -292,8 +302,8 @@
 		E5F34CAA202C275A0020031E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E54C3697202D9D8500D2D20A /* UINoLikeFriendsViewController.h */,
-				E54C3698202D9D8500D2D20A /* UINoLikeFriendsViewController.m */,
+				E54C3697202D9D8500D2D20A /* UIFoundViewController.h */,
+				E5422B7C204164EA00D94FFB /* UIFoundViewController.m */,
 				E5F34CAB202C277F0020031E /* UIProfileHomeViewController.h */,
 				E5F34CAC202C277F0020031E /* UIProfileHomeViewController.m */,
 				E54C3691202D7FA900D2D20A /* UISettingViewController.h */,
@@ -506,7 +516,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E57EED9F2005F883007D0FC1 /* HomeIndexViewController.m in Sources */,
+				E5422B7B20414DA200D94FFB /* UIFoundCell.m in Sources */,
 				E5F34CB7202C573D0020031E /* WYGenderPickerView.m in Sources */,
+				E5D95DE82041129E0047D133 /* SDRangeSliderView.m in Sources */,
+				E5422B7D204164EA00D94FFB /* UIFoundViewController.m in Sources */,
 				E5F34CB1202C303A0020031E /* TinerCommonControl.m in Sources */,
 				E54C369D202D9F2300D2D20A /* UIMessageIndexViewController.m in Sources */,
 				E57766F120401A6900AF23DC /* UILikeFriendCell.m in Sources */,
@@ -521,7 +534,6 @@
 				E57EEDA8200609A7007D0FC1 /* LeftMenuViewDemo.m in Sources */,
 				E51C10611FE7693900CA522F /* AppDelegate.m in Sources */,
 				E57F05A62009F81100ECDAC0 /* SPCarouselView.m in Sources */,
-				E54C3699202D9D8500D2D20A /* UINoLikeFriendsViewController.m in Sources */,
 				E5CD83D32029B1F400F3A90A /* CardScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

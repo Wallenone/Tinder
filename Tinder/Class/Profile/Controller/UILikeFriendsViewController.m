@@ -131,7 +131,7 @@
     if (!_tbv) {
         
         __weak typeof(self) weakSelf = self;
-        CGRect tbvFrame = CGRectMake(0, CGRectGetMaxY(self.headerView.frame), SCREEN_WIDTH, SCREEN_HEIGHT-CGRectGetMaxY(self.headerView.frame));
+        CGRect tbvFrame = CGRectMake(0, CGRectGetMaxY(self.headerView.frame), SCREEN_WIDTH, SCREEN_HEIGHT-CGRectGetMaxY(self.headerView.frame)-20*SCREEN_RADIO);
         //初始化
         
         _tbv = [[EZJFastTableView alloc]initWithFrame:tbvFrame];

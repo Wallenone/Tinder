@@ -14,7 +14,7 @@
 #import "UIProfileHomeViewController.h"
 #import "UISettingViewController.h"
 #import "UILikeFriendsViewController.h"
-#import "UINoLikeFriendsViewController.h"
+#import "UIFoundViewController.h"
 @interface LeftMenuViewDemo ()<UIScrollViewDelegate>{
     NSInteger _currentTag;
 }
@@ -195,7 +195,7 @@
         _tbv.separatorStyle=UITableViewCellSeparatorStyleNone;
         _tbv.scrollEnabled=NO;
         //给tableview赋值
-        [_tbv setDataArray:@[@{@"icon":@"ico-Inbox",@"text":@"Tinder",@"width":@"21",@"height":@"23"},@{@"icon":@"ico-draft",@"text":@"Setting",@"width":@"21",@"height":@"20"},@{@"icon":@"ico-star",@"text":@"Like Friends",@"width":@"18",@"height":@"18"},@{@"icon":@"ico-sent",@"text":@"UNLike Friends",@"width":@"23.9",@"height":@"21.1"}]];
+        [_tbv setDataArray:@[@{@"icon":@"ico-Inbox",@"text":@"Tinder",@"width":@"21",@"height":@"23"},@{@"icon":@"ico-draft",@"text":@"Setting",@"width":@"21",@"height":@"20"},@{@"icon":@"ico-star",@"text":@"Friends",@"width":@"18",@"height":@"18"},@{@"icon":@"ico-sent",@"text":@"Found",@"width":@"23.9",@"height":@"21.1"}]];
         
         [_tbv onBuildCell:^(id cellData,NSString *cellIdentifier,NSIndexPath *index) {
             LeftMenuCell *cell=[[LeftMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier WithModel:cellData];
@@ -225,7 +225,7 @@
                 UILikeFriendsViewController *likeVC=[[UILikeFriendsViewController alloc] init];
                 [[CGCommonToolsNode getCurrentVC].navigationController pushViewController:likeVC animated:YES];
             }else if (indexPath.row==3){
-                UINoLikeFriendsViewController *noLickVC=[[UINoLikeFriendsViewController alloc] init];
+                UIFoundViewController *noLickVC=[[UIFoundViewController alloc] init];
                 [[CGCommonToolsNode getCurrentVC].navigationController pushViewController:noLickVC animated:YES];
             }
         }];

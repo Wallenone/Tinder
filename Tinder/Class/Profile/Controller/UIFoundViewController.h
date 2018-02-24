@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UINoLikeFriendsViewController : UIViewController
+@interface UIFoundViewController : UIViewController
 
 @end

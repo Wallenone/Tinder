@@ -7,7 +7,8 @@
 //
 
 #import "UISettingViewController.h"
-
+#import "SDRangeSliderView.h"
+#import "WYGenderPickerView.h"
 @interface UISettingViewController ()
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)UIView *headerView;
@@ -76,6 +77,17 @@
 
 -(void)sliderAgeValueChanged:(UISlider *)slider{
     
+}
+
+-(void)sexClick:(UIButton *)sender{
+    __weak __typeof(self)weakSelf = self;
+    WYGenderPickerView *customPickerSex=[[WYGenderPickerView alloc] initWithInitialGender:NSLocalizedString(@"sex_man", nil)];
+    customPickerSex.confirmBlock = ^(NSString *selectedGender){
+        UILabel *label = [weakSelf.view viewWithTag:1107];
+        label.text=selectedGender;
+    };
+    
+    [self.view addSubview:customPickerSex];
 }
 
 -(UIView *)headerView{
@@ -235,7 +247,7 @@
         [_maxLacationView addSubview:locationContent];
         
         
-        UISlider * slider = [[UISlider alloc]initWithFrame:CGRectMake(20*SCREEN_RADIO , CGRectGetMaxY(locationContent.frame)+20*SCREEN_RADIO, SCREEN_WIDTH-40*SCREEN_RADIO, 15*SCREEN_RADIO)];
+        UISlider * slider = [[UISlider alloc]initWithFrame:CGRectMake(20*SCREEN_RADIO , CGRectGetMaxY(locationContent.frame)+10*SCREEN_RADIO, SCREEN_WIDTH-40*SCREEN_RADIO, 15*SCREEN_RADIO)];
         //01.minimumValue  : 当值可以改变时，滑块可以滑动到最小位置的值，默认为0.0
         slider.minimumValue = 0.0;
         
@@ -255,7 +267,7 @@
         slider.maximumTrackTintColor = [UIColor getColor:@"b5b5b6"];
         
         //09.thumbTintColor : 当前滑块的颜色，默认为白色
-        slider.thumbTintColor = [UIColor whiteColor];
+       // slider.thumbTintColor = [UIColor whiteColor];
 
         //    10.currentMaximumTrackImage : 滑块条最大值处设置的图片
         //    11.currentMinimumTrackImage : 滑块条最小值处设置的图片
@@ -289,6 +301,7 @@
         locationContent.textColor=[UIColor getColor:@"666666"];
         locationContent.font=[UIFont systemFontOfSize:15*SCREEN_RADIO];
         locationContent.textAlignment=NSTextAlignmentRight;
+        locationContent.tag=1107;
         [_sexView addSubview:locationContent];
         
         UIImageView *allow=[[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-26*SCREEN_RADIO, 25*SCREEN_RADIO-5.5*SCREEN_RADIO, 6*SCREEN_RADIO, 11*SCREEN_RADIO)];
@@ -298,6 +311,10 @@
         UIView *lineView=[[UIView alloc] initWithFrame:CGRectMake(15*SCREEN_RADIO, 50*SCREEN_RADIO-0.5, SCREEN_WIDTH-15*SCREEN_RADIO, 0.5)];
         lineView.backgroundColor=[UIColor getColor:@"C8c7cc"];
         [_sexView addSubview:lineView];
+        
+        UIButton *sexBtn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50*SCREEN_RADIO)];
+        [sexBtn addTarget:self action:@selector(sexClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_sexView addSubview:sexBtn];
     }
     
     return _sexView;
@@ -321,34 +338,19 @@
         locationContent.textAlignment=NSTextAlignmentRight;
         [_ageView addSubview:locationContent];
         
-        UISlider * slider = [[UISlider alloc]initWithFrame:CGRectMake(20*SCREEN_RADIO , CGRectGetMaxY(locationContent.frame)+20*SCREEN_RADIO, SCREEN_WIDTH-40*SCREEN_RADIO, 15*SCREEN_RADIO)];
-        //01.minimumValue  : 当值可以改变时，滑块可以滑动到最小位置的值，默认为0.0
-        slider.minimumValue = 0.0;
+        SDRangeSliderView* slider = [[SDRangeSliderView alloc] initWithFrame:CGRectMake(20*SCREEN_RADIO , CGRectGetMaxY(locationContent.frame)+10*SCREEN_RADIO, SCREEN_WIDTH-40*SCREEN_RADIO, 15*SCREEN_RADIO)];
+        slider.lineColor= [UIColor getColor:@"b5b5b6"];
+        slider.highlightLineColor= [UIColor getColor:@"f94f66"];
+        slider.minValue = 18;
+        slider.maxValue = 55;
+        slider.leftValue = 26;
+        slider.rightValue = 43;
         
-        //02.maximumValue : 当值可以改变时，滑块可以滑动到最大位置的值，默认为1.0
-        slider.maximumValue = 100.0;
-        
-        //03.当前值
-        slider.value = 50;
-        
-        //04.continuous : 如果设置YES，在拖动滑块的任何时候，滑块的值都会改变。默认设置为YES
-        [slider setContinuous:YES];
-        
-        //07.minimumTrackTintColor : 小于滑块当前值滑块条的颜色，默认为蓝色
-        slider.minimumTrackTintColor = [UIColor getColor:@"f94f66"];
-        
-        //08.maximumTrackTintColor: 大于滑块当前值滑块条的颜色，默认为白色
-        slider.maximumTrackTintColor = [UIColor getColor:@"b5b5b6"];
-        
-        //09.thumbTintColor : 当前滑块的颜色，默认为白色
-        slider.thumbTintColor = [UIColor whiteColor];
-        
-        //    10.currentMaximumTrackImage : 滑块条最大值处设置的图片
-        //    11.currentMinimumTrackImage : 滑块条最小值处设置的图片
-        //    12.currentThumbImage: 当前滑块的图片
-        
-        [slider addTarget:self action:@selector(sliderAgeValueChanged:) forControlEvents:UIControlEventValueChanged];
         [_ageView addSubview:slider];
+        
+        [slider eventValueDidChanged:^(double left, double right) {
+            locationContent.text = [NSString stringWithFormat:@"%@-%@",@(left),@(right)];
+        }];
     }
     
     return _ageView;
@@ -379,4 +381,6 @@
     
     return _deleteBtn;
 }
+
+
 @end
